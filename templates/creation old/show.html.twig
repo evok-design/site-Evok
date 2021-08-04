@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creation{% endblock %}
+
+{% block body %}
+    <h1>Creation</h1>
+{{ dump(creation) }}
+    {% for categorie in creation.Categorie %}
+        {{ categorie.label }} ok
+    {% endfor %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ creation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ creation.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ creation.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('creation_index') }}">back to list</a>
+
+    <a href="{{ path('creation_edit', {'slug': creation.slug}) }}">edit</a>
+
+    {{ include('creation/_delete_form.html.twig') }}
+{% endblock %}

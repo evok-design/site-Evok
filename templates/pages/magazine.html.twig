@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Magazine parcours {% endblock %}
+
+{% block body %}
+
+    {% include 'header.html.twig' with {'title': 'Magazine parcours', 'img' : 'uploads/parcours/parcour_header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz'} %}
+
+    <div class="row parcours-text">
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2018</p>
+            <a href="{{ asset('uploads/parcours/Parcours06.pdf')}}" target="_blank">
+                <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/parcours06.jpg') }}" alt="Parcours 6 Evok Septembre 2017">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2017</p>
+            <a href="{{ asset('uploads/parcours/12-2017-Info-Mairies-web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/parcours06mini.jpg') }}" alt="Parcours 6 Evok Septembre 2017">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2016</p>
+            <a href="{{ asset('uploads/parcours/10-Evok--Parcours05--web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/parcours05.jpg') }}" alt="Parcours 5 Evok Septembre 2016">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2016</p>
+            <a href="{{ asset('uploads/parcours/9-Evok-Parcours04-web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/parcours04.jpg') }}" alt="Parcours 4 Evok Janvier 2016">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2015</p>
+            <a href="{{ asset('uploads/parcours/8-Evok-Parcours03-web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/parcours03.jpg') }}" alt="Parcours 3 Evok Septembre 2015">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2015</p>
+            <a href="{{ asset('uploads/parcours/Evok---Parcours02---web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/Parcours02.jpg') }}" alt="Parcours 2 Evok Février 2015">
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mt-5 text-center p-0">
+            <p>2014</p>
+            <a href="{{ asset('uploads/parcours/7-Evok--Parcours01--web.pdf')}}" target="_blank">
+            <img class="img-fluid mt-2 img-parcours" src="{{ asset('uploads/parcours/Parcours01.jpg') }}" alt="Parcours 1 Evok Mars 2014">
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}

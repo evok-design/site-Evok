@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NewsletterUsers{% endblock %}
+
+{% block body %}
+    <h1>NewsletterUsers</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ newsletter_user.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ newsletter_user.Lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ newsletter_user.Firstname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ newsletter_user.Email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('newsletter_users_index') }}">back to list</a>
+
+    <a href="{{ path('newsletter_users_edit', {'id': newsletter_user.id}) }}">edit</a>
+
+    {{ include('newsletter_users/_delete_form.html.twig') }}
+{% endblock %}

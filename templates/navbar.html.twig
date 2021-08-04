@@ -1,0 +1,67 @@
+{#
+<div id="navbar">
+    <div class="row">
+        <div class="col">
+            <div class="navbar">
+                <div class="logo logoHaut" style="display: none">
+
+                    <a href="https://evok.fr">
+                        <img src="{{ asset('/img/logo.svg') }}" id="logo" alt="Logo EVOK agence de communication">
+                    </a>
+                    <button id="hamburger-button" class="float-right mt-5" style="background-color: #00adef; color:#FFFFFF; border:none;border-radius:6px;width:40px;height:40px;"><i class="fas fa-bars"></i></button>
+                </div>
+                <ul id="menuResponsive">
+                    <li><a href="{{ path('index') }}" title="Prestations agence communication Nancy Metz Lorraine" class="{% if app.request.get('_route') == 'index' %}active{% endif %}">Prestations</a></li>
+                    <li><a href="{{ path('creation_index') }}" class="{% if app.request.get('_route') == 'creation_index' or app.request.get('_route') == "creation_show" %}active{% endif %}">Creations</a></li>
+                    <li id="navbar_li_agence">
+                        <div class="dropdown">
+                            <div class="dropbtn text-uppercase" ><a href="{{ path('agence') }}" id="navbar_button_agence" class="{% if (app.request.get('_route') == 'agence' or app.request.get('_route') == 'contact' or app.request.get('_route') == 'parcours') and  app.request.query.get("subject") != "Devis" %}active{% endif %}">Agence</a></div>
+                            <div class="dropdown-content" id="navbar_dropdown_content">
+                                <div class="dropdown-content2" id="navbar_dropdown_content2">
+                                    <a href="{{ path('contact') }}" class="{% if app.request.get('_route') == 'contact' and app.request.query.get("subject") != "Devis" %}active{% endif %} dropdown_text_content">CONTACT</a>
+                                    <a href="{{ path('parcours') }}" class="{% if app.request.get('_route') == 'parcours' %}active{% endif %} dropdown_text_content">MAGAZINES PARCOURS</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li id="navbar_evenements_button"><a href="{{ path('actualites_index_page', {'page': 1}) }}" class="{% if app.request.get('_route') == 'actualites_index_page' %}active{% endif %} ">Blog</a></li>
+                    <li><a href="{{ path('contact') }}" class="text-red devisBold {% if app.request.get('_route') == 'contact' and app.request.query.get("subject") == "Devis" %}active{% endif %}">Devis</a></li>
+                </ul>
+                <div id="line-header">
+                </div>
+                <div class="logo logoBas">
+                    <a href="https://evok.fr"> 
+                        <img src="{{ asset('/img/logo.svg') }}" id="logo" alt="Logo EVOK agence de communication">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>#}
+<navbar class="nav">
+    <a href="{{ path('index') }}"  ><img src="{{ asset('/img/Logo_evok_designindustriel.png') }}" alt="" class="logo"></a>
+    <ul>
+        <li><a href="{{ path('agence') }}">L'agence</a></li>
+        <li><a href="{{ path('creation_index') }}">Créations</a></li>
+        <li><a href="{{ path('actualites_index_page', {'page': 1}) }}">Evok News</a></li>
+        <li><a href="{{ path('parcours') }}">Presse</a></li>
+        <li><a href="http://evok-international.com/">Evok Internationnal</a></li>
+        <li><a href="{{ path('contact') }}">contact</a></li>
+    </ul>
+
+</navbar>
+
+{% block javascripts %}
+    <script>
+        let nav = document.querySelector('.nav')
+
+        window.addEventListener('scroll',()=>{
+           if(window.scrollY>400){
+                nav.classList.add('navHide')
+           }else {
+               nav.classList.remove('navHide')
+           }
+        })
+    </script>
+{% endblock %}

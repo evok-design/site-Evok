@@ -1,0 +1,6 @@
+index:
+    path: /
+    controller: App\Controller\BlocController::index
+
+app_logout:
+    path: /logout

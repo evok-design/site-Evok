@@ -1,0 +1,23 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Ajouter une photo{% endblock %}
+
+{% block body %}
+
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-left">
+                <h1>Ajouter une photo à un slider</h1>
+                <a href="{{ path('slider_index') }}" class="btn btn-secondary"><i class="fal fa-angle-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ include('admin/slide/_form.html.twig', {'boutton_label': 'ajouter'}) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

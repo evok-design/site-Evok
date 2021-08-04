@@ -1,0 +1,79 @@
+<nav class="navbar row navbar-expand-lg navbar-light bg-light shadow mb-2 pb-3 pt-3">
+    <a class="navbar-brand" href="{{ path('creation_index_admin') }}">
+        <img src="{{ asset('img/logo.png') }}" alt="Logo Administration">
+        <sup class="text-secondary font-weight-bold">ADMIN</sup>
+    </a>
+    <a href="{{ path('user_new') }}"><button class="btn btn-primary">Espace utilisateur</button></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'Creation' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Créations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('creation_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('creation_new') }}">Ajouter</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'Categorie' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Catégories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('categorie_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('categorie_new') }}">Ajouter</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'Actualites' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actualités
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('actualite_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('actualites_new') }}">Ajouter</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'Clients' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('client_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('client_new') }}">Ajouter</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'Bloc' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Groupe
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('bloc_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('bloc_new') }}">Ajouter</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'sliders' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sliders
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('slider_index') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('slider_new') }}">Créer un slider</a>
+                    <a class="dropdown-item" href="{{ path('slide_index') }}">Voir toutes les photos</a>
+                    <a class="dropdown-item" href="{{ path('slider_add_picture') }}">Ajouter une photo à un slider</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown ml-4 mr-1">
+                <a class="hoverDeco btn btn-info text-white">
+                    <i class="fas fa-user-circle mr-3 "></i>{{ app.user.nom }}
+                </a>
+                <a class="nav-link Deco" href="/logout">
+                    Déconnexion <i class="far fa-sign-out"></i>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} Agence de communication Nancy{% endblock %}
+{% block meta %}
+    {% include "meta.html.twig" with{
+        "metaDescription" : "Evok est une agence de design industriel / produit implantée en région Lorraine Alsace Champagne Ardenne à proximité de Nancy, Metz, Epinal, Strasbourg...",
+        "metaOgTitle" : "Evok Design",
+        "metaOgDescription" : "Evok est une agence de design industriel / produit implantée en région Lorraine Alsace Champagne Ardenne à proximité de Nancy, Metz, Epinal, Strasbourg...",
+        "metaOgImage" : "",
+        "metaOgImageFormat" : "",
+        "metaOgImageWidth" : "",
+        "metaOgImageHeight" : "",
+
+        "metaTwitterDescription" : "Evok est une agence de design industriel / produit implantée en région Lorraine Alsace Champagne Ardenne à proximité de Nancy, Metz, Epinal, Strasbourg...",
+        "metaTwitterTitle" : "Evok design",
+        "metaTwitterImage" : "",
+    } %}
+{% endblock %}
+
+{% block body %}
+
+    {% for bloc in blocs %}
+        {% set img = '/uploads/blocs/'~bloc.image%}
+
+        <div class="accueilDesk" style="display: none">
+            {% if loop.index0 is even %}
+                <div class="row rowHover" data-id="{{ loop.index0 }}">
+                    <div class="col-12 col-md-6 animated start slideInLeft" data-animation="slideInLeft">
+                        <a href="{{ path('bloc_show', {slug : bloc.slug}) }}">
+                            <div class="row bg-prestation index-img backstretch greyImg" data-img="{{img}}">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h1 id="titre{{ loop.index0 }}" class=" pl-4 pt-3 pr-2 mt-5 title-section text-red" style="text-transform: uppercase"><a class="text-red nounderline " href="{{ path('bloc_show', {slug : bloc.slug}) }}">{{ bloc.label }}</a></h1>
+                        <div class="col p-4" >{{ bloc.description1|raw }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row rowHover" data-id="{{ loop.index0 }}">
+                    <div class="col-12 col-md-6 ">
+                        <h1 id="titre{{ loop.index0 }}" class="col pl-4 pt-3 pr-2 mt-5 title-section text-red" style="text-transform: uppercase"><a class="text-red nounderline " href="{{ path('bloc_show', {slug : bloc.slug}) }}">{{ bloc.label }}</a></h1>
+                        <div class="col p-4">{{ bloc.description1|raw }}</div>
+                    </div>
+                    <div class="col-12 col-md-6 animated start slideInRight" data-animation="slideInRight">
+                        <a href="{{ path('bloc_show', {slug : bloc.slug}) }}">
+                            <div class="row bg-prestation index-img backstretch greyImg" data-img="{{img}}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row rowHover accueilMobile" data-id="{{ loop.index0 }}" style="display: none">
+            <div class="col-12 col-md-6 animated start slideInLeft" data-animation="slideInLeft">
+                <a href="{{ path('bloc_show', {slug : bloc.slug}) }}">
+                    <div class="row bg-prestation index-img backstretch greyImg" data-img="{{img}}">
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <h1 id="titre{{ loop.index0 }}" class=" pl-4 pt-3 pr-2 mt-5 title-section text-red" style="text-transform: uppercase"><a class="text-red nounderline " href="{{ path('bloc_show', {slug : bloc.slug}) }}">{{ bloc.label }}</a></h1>
+                <div class="col p-4" >{{ bloc.description1|raw }}</div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            $(".accueilDesk").show();
+            $(".accueilMobile").hide();
+
+        }
+        else {
+            $('.accueilMobile').show();
+            $('.accueilDesk').hide();
+        }
+
+        $('.row').mouseenter(function (e) {
+            let dataid = $(this).data('id');
+            $Titre = $('#titre'+dataid);
+
+            $Titre.animate({
+                fontSize: "2.3em"},150,function(){
+            });
+        });
+
+        $('.row').mouseleave(function (e) {
+            let dataid = $(this).data('id');
+            $Titre = $('#titre'+dataid);
+
+            $Titre.animate({
+                fontSize: "1.9em"},150,function(){
+            });
+        });
+
+
+
+
+
+    </script>
+{% endblock %}

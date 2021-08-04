@@ -1,0 +1,21 @@
+<div class="row" id="testScroll{{id}}">
+    {% for actualite in actualites|slice(0,4) %}
+
+        {% set img = 'uploads/actualites/'~actualite.imgPrev %}
+
+        <div class="col-lg-6 col-12 pl-0 pr-0 animated position-relative actualite-container-responsive">
+            <a href="{{ path('actualites_show', {'slug' : actualite.slug}) }}">
+                <div class="actualite">
+                    <div class="actualites" id="img{{ actualite.id }}"><img src="/uploads/actualites/{{ actualite.imgPrev}}" class="img-fluid"></div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6 col-12 pl-0 pr-0 animated pl-0 pr-0">
+            <h3 class="pl-4 pt-3 text-uppercase text-red mt-2">{{ actualite.titre }} - {{actualite.date|date('d/m/Y')}}</h3>
+            <div class="p-4 no-padding-mediaQuerries textIndexActu">{{actualite.contenu|truncate(250, true, " ...")|raw}}</div>
+            <div class="text-center pb-2"><a href="{{ path('actualites_show', {'slug' : actualite.slug}) }}">
+                    <button class="evok btn-actu-suite mb-5" >Lire la suite</button>
+                </a></div>
+        </div>
+    {% endfor %}
+</div>

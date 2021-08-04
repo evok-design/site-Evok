@@ -1,0 +1,25 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New Slider{% endblock %}
+
+{% block body %}
+
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-left">
+                <h1>Créer un nouveau slider</h1>
+                <a href="{{ path('slider_index') }}" class="btn btn-secondary"><i class="fal fa-angle-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ include('admin/slider/_form.html.twig', {'button_label':'Ajouter'}) }}
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<meta name="description" content="{% if metaDescription is defined %}{{ metaDescription }}{% else %}{% endif %}">
+<meta name="keywords" content="">
+
+<meta property="og:url" content="{{ app.request.uri }}"/>
+<meta property="og:site_name" content="Evok design, agence de design industriel" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{% if metaOgTitle is defined %}{{ metaOgTitle }}{% else %}{% endif %}" />
+<meta property="og:description" content="{% if metaOgDescription is defined %}{{ metaOgDescription }}{% else %}{% endif %}" />
+<meta property="og:image" content="{% if metaOgImage is defined %}{{ metaOgImage }}{% else %}{% endif %}" />
+<meta property="og:image:type" content="image/{% if metaOgImageFormat is defined %}{{ metaOgImageFormat }}{% else %}{% endif %}" />
+<meta property="og:image:width" content="{% if metaOgImageWidth is defined %}{{ metaOgImageWidth }}{% else %}{% endif %}" />
+<meta property="og:image:height" content="{% if metaOgImageHeight is defined %}{{ metaOgImageHeight }}{% else %}{% endif %}" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:description" content="{% if metaTwitterDescription is defined %}{{ metaTwitterDescription }}{% else %}Agence de design à Ludres en Lorraine, près de Nancy Metz.{% endif %}"/>
+<meta name="twitter:title" content="{% if metaTwitterTitle is defined %}{{ metaTwitterTitle }}{% else %}Evok design, agence de design{% endif %}"/>
+<meta name="twitter:site" content="@EVOK_design"/>
+<meta name="twitter:domain" content="Evok Design & Comm"/>
+<meta name="twitter:image:src" content="{% if metaTwitterImage is defined %}{% endif %}"/>
+<meta name="twitter:creator" content="@EVOK_design"/>

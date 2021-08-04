@@ -1,0 +1,157 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des créations{% endblock %}
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des créations</h1>
+                <a href="{{ path('creation_new') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter une création</button></a>
+            </div>
+        </div>
+        <table class="table" id="tableMessage">
+            <thead>
+            <tr>
+                <th class="text-left">Modifier l'ordre</th>
+                <th class="text-left">Titre</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div class="PremPosition alert alert-danger" style="display: none">Cet élément apparait déjà en première position</div>
+            <div class="LastPosition alert alert-danger" style="display: none">Cet élément apparait déjà en dernière position</div>
+            <div class="error alert alert-error" style="display: none">Une erreur est survenue</div>
+            {% for creation in creations %}
+                <tr data-id="{{ creation.id }}" data-ordre="{{ creation.ordre }}">
+                    <td>
+                        <button id="btnOrdreUp" class="btn btn-info btnOrdre"><i class="fas fa-sort-up"></i></button>
+                        <button id="btnOrdreDown" class="btn btn-info btnOrdre"><i class="fas fa-sort-down"></i></button>
+                    </td>
+                    <td class="text-left">{{ creation.title }}</td>
+                    <td class="text-right">
+                        <a href="{{ path('creation_show', {'slug': creation.slug}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>
+                        <a href="{{ path('creation_edit', {'slug': creation.slug}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                        {{ include('creation/_delete_form.html.twig', {'slug' : creation.slug}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{parent()}}
+
+    <script>
+
+        //Fonction pour remonter l'odre d'une création
+        $(document).on('click','#btnOrdreUp',function(e){
+            let idElement = $(this).parents('tr').data('id');
+            let elemHtml = $("tr[data-id='"+ idElement +"']").html();
+
+            let ordre = $(this).parents('tr').data('ordre');
+
+            $('.btnOrdre').attr("disabled", true);
+
+            $.ajax({
+                url: "{{ path('CreationSortUp') }}",
+                type: "POST",
+                data:{idElement:idElement,elemHtml:elemHtml, ordre:ordre},
+                dataType: 'json',
+
+                success:function(response){
+
+                    if(response.info === "erreur"){
+                        $('.PremPosition').show(500).delay(2000).hide(500);
+                    }
+                    else if(response.info === "ok"){
+
+                        let ordreUp = ordre - 1;
+                        let stockage = $("tr[data-ordre='"+ ordre +"']");
+
+                        $("tr[data-ordre='"+ ordreUp +"']").before(response.html);
+                        let attente = 'attente';
+                        $("tr[data-ordre='"+ ordre +"']").attr({'data-ordre' : attente});
+
+                        $(stockage).remove();
+
+                        //On change les index des 2 data-ordre que l'on a échnagé de position
+                        $("tr[data-ordre='"+ ordreUp +"']").attr({'data-ordre' : ordre});
+                        $("tr[data-ordre='"+ attente +"']").attr({'data-ordre' : ordreUp});
+                    }
+                },
+                error:function () {
+                    $('.error').show(1).delay(2000).hide();
+                },
+                complete: function () {
+                    $('.btnOrdre').attr("disabled", false);
+                },
+            });
+
+        });
+
+
+        //Fonction pour descendre l'odre d'une création
+        $(document).on('click','#btnOrdreDown',function(e){
+
+            let idElement = $(this).parents('tr').data('id');
+            let elemHtml = $("tr[data-id='"+ idElement +"']").html();
+
+            let ordre = $(this).parents('tr').data('ordre');
+
+            $('.btnOrdre').attr("disabled", true);
+
+            $.ajax({
+                url: "{{ path('CreationSortDown') }}",
+                type: "POST",
+                data:{idElement:idElement,elemHtml:elemHtml, ordre:ordre},
+                dataType: 'json',
+
+                success:function(response){
+
+                    if(response.info === "erreur"){
+                        $('.LastPosition').show(500).delay(2000).hide(500);
+                    }
+                    else if(response.info === "ok"){
+
+                        let ordreUp = ordre + 1;
+                        let stockage = $("tr[data-ordre='"+ ordre +"']");
+
+                        $("tr[data-ordre='"+ ordreUp +"']").after(response.html);
+                        let attente = 'attente';
+                        $("tr[data-ordre='"+ ordre +"']").attr({'data-ordre' : attente});
+
+                        $(stockage).remove();
+
+                        //On change les index des 2 data-ordre que l'on a échnagé de position
+                        $("tr[data-ordre='"+ ordreUp +"']").attr({'data-ordre' : ordre});
+                        $("tr[data-ordre='"+ attente +"']").attr({'data-ordre' : ordreUp});
+                    }
+                },
+                error:function () {
+                    $('.error').show(1).delay(2000).hide();
+                },
+                complete: function () {
+                    $('.btnOrdre').attr("disabled", false);
+                },
+            });
+
+        });
+
+
+
+    </script>
+
+
+
+{% endblock %}

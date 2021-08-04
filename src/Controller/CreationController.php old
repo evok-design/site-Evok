@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Creation;
+use App\Form\CreationType;
+use App\Repository\CreationRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route("/nos-realisations")
+ */
+class CreationController extends AbstractController
+{
+    /**
+     * @Route("/", name="creation_index", methods="GET")
+     */
+    public function index(CreationRepository $creationRepository): Response
+    {
+        return $this->render('creation/index.html.twig', ['creations' => $creationRepository->findAll(),'controller_name' => 'Creation']);
+    }
+
+    /**
+     * @Route("/index", name="creation_index_admin", methods="GET")
+     */
+    public function indexAdmin(CreationRepository $creationRepository): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/creation/index.html.twig', ['creations' => $creationRepository->findAll(),'controller_name' => 'Creation']);
+    }
+
+    /**
+     * @Route("/new", name="creation_new", methods="GET|POST")
+     */
+    public function new(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $creation = new Creation();
+        $form = $this->createForm(CreationType::class, $creation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($creation);
+            $em->flush();
+
+            return $this->redirectToRoute('creation_index_admin');
+        }
+
+        return $this->render('admin/creation/new.html.twig', [
+            'creation' => $creation,
+            'form' => $form->createView(),
+            'controller_name' => 'Creation'
+        ]);
+    }
+
+    /**
+     * @Route("/{slug}", name="creation_show", methods="GET")
+     */
+    public function show(Creation $creation): Response
+    {
+        return $this->render('creation/show.html.twig', ['creation' => $creation]);
+    }
+
+    /**
+     * @Route("/{slug}/edit", name="creation_edit", methods="GET|POST")
+     */
+    public function edit(Request $request, Creation $creation): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $form = $this->createForm(CreationType::class, $creation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('creation_index', ['id' => $creation->getId()]);
+        }
+
+        return $this->render('admin/creation/edit.html.twig', [
+            'creation' => $creation,
+            'form' => $form->createView(),
+            'controller_name' => 'Creation',
+        ]);
+    }
+
+    /**
+     * @Route("/{slug}", name="creation_delete", methods="DELETE")
+     */
+    public function delete(Request $request, Creation $creation): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        if ($this->isCsrfTokenValid('delete'.$creation->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($creation);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('creation_index_admin');
+    }
+}

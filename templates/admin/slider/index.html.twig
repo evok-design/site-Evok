@@ -1,0 +1,46 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des sliders{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des sliders</h1>
+                <a href="{{ path('slider_new') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Créer un nouveau slider</button></a>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-left">ID</th>
+                    <th >Nom</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for slider in sliders %}
+                    <tr>
+                        <td class="text-left">{{ slider.id }}</td>
+                        <td> {{ slider.name }}</td>
+                        <td class="text-right">
+                            {#<a href="{{ path('slider_show', {'id': slider.id}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>#}
+                            <a href="{{ path('slider_edit', {'id': slider.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                            {{ include('admin/slider/_delete_form.html.twig', {'id' : slider.id}) }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+{% endblock %}

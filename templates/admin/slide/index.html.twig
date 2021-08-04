@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des photos{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des photos</h1>
+                <a href="{{ path('slider_add_picture') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter une photos à un slide</button></a>
+            </div>
+        </div>
+
+        <div class="row">
+        {% for slide in slides %}
+            <div class="col-3 mt-5">
+                <a href="{{ path('slide_edit', {'id':slide.id}) }}"><img class="img-fluid " src="/uploads/slider/{{ slide.urlImage}}"> </a>
+                <p> slider associé: {{ slide.slider.name }}</p>
+                {{ include('admin/slide/_delete_form.html.twig', {'id' : slide.id}) }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+{% endblock %}

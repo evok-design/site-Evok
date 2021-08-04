@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} {{ bloc.title }}{% endblock %}
+{% block meta %}
+    {% include "meta.html.twig" with{
+        "metaDescription" : bloc.metaDescription,
+
+        "metaOgTitle" : "",
+        "metaOgDescription" : "",
+        "metaOgImage" : "",
+        "metaOgImageFormat" : "",
+        "metaOgImageWidth" : "",
+        "metaOgImageHeight" : "",
+
+        "metaTwitterDescription" : "",
+        "metaTwitterTitle" : "",
+        "metaTwitterImage" : "",
+    } %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col pl-0 pr-0 position-relative overflow-hidden">
+            <img src="/uploads/blocs/{{ bloc.imgHeader }}" alt="" class="img-header animated" data-animation="fadeIn">
+        </div>
+    </div>
+    <div class="mt-5 row">
+        <div class="col-12 col-md-6 pl-0 pr-0">
+
+            {%  if bloc.slider.id is defined %}
+                <div class="slickCall">
+                    {% for slide in slides %}
+                        <div><img src="/uploads/slider/{{ slide.urlImage}}" alt="{{ slide.description }}" class="img-fluid"></div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <img src="/uploads/blocs/{{ bloc.imgContent1 }}" alt="" class="img-fluid">
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-6 pl-0 pr-0 description-creation">
+            <h1 class="pb-2 pl-4 pr-2 title-section text-red" style="text-transform: uppercase">{{ bloc.label }}</h1>
+            <div class="pl-4 pt-1 pr-4">{{ bloc.description1|raw|nl2br }}</div>
+        </div>
+    </div>
+
+    {% if bloc.imgContent2 is not null and bloc.description2 is not null %}
+        <div class="row">
+            <div class="col-12 col-md-6 pl-0 pr-0 description-creation">
+                <p class="p-4">{{ bloc.description2|raw|nl2br }}</p>
+            </div>
+            <div class="col-12 col-md-6 pr-0 pl-0">
+                <img src="/uploads/blocs/{{ bloc.imageContent2 }}" alt="" class="img-fluid">
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center text-uppercase mt-5 mb-5">Nos réalisations</h3>
+        </div>
+    </div>
+
+    <div class="row DesktopCre">
+        {% if(otherCreations|length == 3) %}
+            {% for related in otherCreations %}
+                <div class="col-12 col-md-4 text-center {% if loop.index == 1 %}pl-md-0{% elseif loop.index == 2 %}pl-md-medium pr-md-medium{% elseif loop.index == 3 %}pr-md-0{% endif %}">
+                    <a href="{{ path('creation_show', {'slug' : related.slug}) }}">
+                        <div style="height:100%; width:100%;" class="backstretch_image_content"
+                             data-img="/uploads/creations/{{ related.imageContent }}"></div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="row slickCall2" style="display: none">
+    {% if(otherCreations|length == 3) %}
+        {% for related in otherCreations %}
+            <div class="col-12 pl-3 pr-3">
+                    <a href="{{ path('creation_show', {'slug' : related.slug}) }}">
+            <img src="/uploads/creations/{{ related.imageContent }}" alt="" class="img-fluid m-auto">
+            </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script>
+        $(document).ready(function(){
+            $('.slickCall').slick({
+                infinite: true,
+                speed: 950,
+                arrows : false,
+                // cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                $('.slickCall2').show();
+                $('.DesktopCre').hide();
+                $('.slickCall2').slick({
+                    infinite: true,
+                    speed: 950,
+                    arrows : false,
+                    // cssEase: 'linear',
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            }
+
+            $('.backstretch_image_content').each(function(){
+                $(this).backstretch($(this).data('img'));
+            });
+
+
+
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ actualite.title }}{% endblock %}
+{% block meta %}
+    {% include "meta.html.twig" with{
+        "metaDescription" : actualite.metaDescription,
+
+        "metaOgTitle" : "",
+        "metaOgDescription" : "",
+        "metaOgImage" : "",
+        "metaOgImageFormat" : "",
+        "metaOgImageWidth" : "",
+        "metaOgImageHeight" : "",
+
+        "metaTwitterDescription" : "",
+        "metaTwitterTitle" : "",
+        "metaTwitterImage" : "",
+    } %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="text-center">
+        <h1 class="mb-2">{{ actualite.title }}</h1>
+        <h2  class="text-red mb-5">{{ actualite.date|date('d/m/Y') }}</h2>
+    </div>
+
+    
+        {#SLIDER#}
+    <div class="text-center mx-auto">
+        {% if actualite.slider.id is defined %}
+            <div class="slickCall" style="z-index: 99">
+                {% for slide in slides %}
+                    <div>
+                        <img src="/uploads/slider/{{ slide.urlImage}}" alt="{{ slide.description }}" class="img-fluid  d-inline">
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center">
+                <img src="/uploads/actualites/{{ actualite.imgHeader}}" alt="{{ actualite.metaDescription }}" class="img-fluid  d-inline">
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="justifyActu padding-top-actus-MQ mx-3 my-5 ">{{actualite.contenu|raw}}</div>
+            </div>
+        </div>
+    </div>
+
+{#    <div class="row">#}
+{#        <div class="col pl-0 pr-0 position-relative overflow-hidden">#}
+{#            <img src="/uploads/actualites/{{ actualite.imgHeader }}" alt="" class="img-header animated" data-animation="fadeIn">#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="containerActu">#}
+{#        <div class="mt-5 row d-block">#}
+{#            <div class="col-12 pl-0 pr-0 imageActualiteShow">#}
+{#                {% if actualite.slider.id is defined %}#}
+{#                    <div class="slickCall" style="z-index: 99">#}
+{#                        {% for slide in slides %}#}
+{#                            <div><img src="/uploads/slider/{{ slide.urlImage}}" alt="{{ slide.description }}" class="img-fluid"></div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+
+{#                {% else %}#}
+{#                    <img src="/uploads/actualites/{{ actualite.imgContent}}" alt="" class="img-fluid">#}
+{#                {% endif %}#}
+{#            </div>#}
+{#            <div class="col-12 pl-0 pr-0 description-creation">#}
+{#                <h1 class="pl-4 text-uppercase text-red">{{ actualite.titre }} <p>{{ actualite.date|date('d/m/Y') }}</p></h1>#}
+{#                <div class="justifyActu padding-top-actus-MQ mx-3">{{actualite.contenu|raw}}</div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% if actualite.video != null %}#}
+{#            <div class="container text-center" id="videoContainer">#}
+{#                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ actualite.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    </div>#}
+    <div class="mt-5 mb-5" style="display: inherit">
+        <div class=" pl-0 pr-0 text-center mt-5">
+            <a href="{{ path('actualites_index_page', {'page': page}) }}" class="evok" ><button class="evok">
+                    Retour aux actualités
+                </button></a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script>
+        $(document).ready(function(){
+            $('.slickCall').slick({
+                infinite: true,
+                speed: 950,
+                arrows : false,
+                // cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        });
+    </script>
+
+{% endblock %}

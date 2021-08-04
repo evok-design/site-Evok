@@ -1,0 +1,36 @@
+<div class="scrollPrint" data-id="{{ i }}" style="display: none">
+
+    <div class="row mt-mg-2">
+
+            {% for creation in creations %}
+
+            {% set img = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img2 = '/uploads/creations/'~creation.image1 %}
+            <div class="col-lg-6 col-12 px-1 animated position-relative creations-container mt-2">
+                <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                    <div class="creation" data-id="{{ creation.id }}" style="height:100%; width: 100%;">
+                        <img src="{{ img }}" id="{{ creation.id }}" style="height:100%; width: 100%;"/>
+                        <img src="{{ img2 }}" id="{{ creation.id }}bis" style="height:100%; width: 100%; display: none;"/>
+                    </div>
+                </a>
+            </div>
+
+
+        {% endfor %}
+
+    </div>
+
+    <script>
+        $('.creation').on('mouseenter', function(){
+            var creationId = '#'+$(this).data('id');
+            $(creationId).hide();
+            $(creationId+'bis').show();
+        });
+        $('.creation').on('mouseleave', function(){
+            var creationId = '#'+$(this).data('id');
+            $(creationId).show();
+            $(creationId+'bis').hide();
+        });
+    </script>
+
+</div>

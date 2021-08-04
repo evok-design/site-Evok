@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'abonner à la Newsletter{% endblock %}
+
+{% block body %}
+    <h1>S'abonner à la Newsletter</h1>
+
+
+    {% if message is defined %}
+        <p id="messageInscription" class="alert alert-success col-6">{{ message }}</p>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-6">
+            {{ include('newsletter_users/_form.html.twig') }}
+        </div>
+    </div>
+
+    <a href="{{ path('actualites_index_page', {'page' : 1}) }}"><button class="btn btn-secondary">Retour aux actualités</button></a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        if(messageInscription != null){
+            var inputs = document.getElementsByClassName('form-control');
+            Array.from(inputs).forEach(element =>{
+                console.log(element.value = '');
+            });
+        }
+
+        function deleteMessageInscription(){
+            var messageInscription = $('#messageInscription');
+            if(messageInscription != null){
+                messageInscription.slideToggle();
+            }
+        }
+
+        setTimeout(deleteMessageInscription, 1500);
+
+
+
+
+    </script>
+
+{% endblock %}
+

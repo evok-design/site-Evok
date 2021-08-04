@@ -1,0 +1,322 @@
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+
+    {#{% include 'header.html.twig' with {'title': 'événements', 'img' : 'uploads/Events/header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
+    {% set head = '/uploads/actualites/'~header.imgHeader %}
+    <section>
+<section class="bg">
+
+    <div class="head" style=" background: url('{{ head}}');"></div>
+    <div class="titreH">
+        <div class="line">
+            <span class="petit">design</span>
+            <span class="grand">news</span>
+        </div>
+        {# <i class="far fa-angle-down"></i>#}
+    </div>
+    <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt">Lire l'article</a>
+
+</section>
+
+<section class="body">
+    <div class="container-fluid   text-center px-5 mt-xl-5">
+        <div class="row px-xl-5 mx-xl-4" >
+            {% for actualite in actualites %}
+                {% set img = '/uploads/actualites/'~actualite.imgPrev %}
+            <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-1 pl-0 pr-1" >
+                <div id="fond" >
+                    <img src="{{img}}" class="img-fluid2" >
+                    <a href="{{  path('actualites_show', {'slug':  actualite.slug, 'page': page}) }}" class="butt2">Lire l'article</a>
+                </div>
+
+                <div class="containeurTitre text-left"><a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}" class="petitTitre">{{ actualite.titre }}</a></div>
+                {#<p class="mt-0 text-uppercase text-red marginActuRes"> {{ actualite.date|date('d/m/Y') }}</p>#}
+               {# <p class="grandTitre">{{ actualite.newsletterTextPreview|raw}}</p>#}
+                {#<a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><button class="evok btn-actu-suite mt-3 mb-5">Lire la suite</button></a>#}
+            </div>
+            {% endfor %}
+        {#
+        <div class="text-center">
+            <h1>EVOK NEWS</h1>
+            <a href="https://www.instagram.com/evok_design/" target="_blank"><img src="{{ asset('img/picto_site_insta.svg') }}" width="100px" alt=""></a>
+            <a href="https://www.facebook.com/evokdesign/" target="_blank"><img src="{{ asset('img/picto_site_fb.svg') }}" width="100px" alt=""></a>
+            <a href="https://www.linkedin.com/company/2876531/" target="_blank"><img src="{{ asset('img/picto_site_linkedin.svg') }}" width="100px" alt=""></a>
+
+        </div>
+        #}
+
+{#
+        <div class="row">
+            <div id="computerDisplay" class="col-12">
+                {% for actualite in actualites %}
+                    {% set img = '/uploads/actualites/'~actualite.imgPrev %}
+                    {% if loop.index%2 == 1 %}
+                        <div data-id="{{ actualite.id }}" class="article row affichageDesktop mt-3">
+                            <div class="col-lg-6 col-12">
+                                <a href="{{ path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><img src="{{img}}" class="img-fluid"></a>
+                            </div>
+                            <div class="col-lg-6 col-12 pl-3">
+                                <a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><h3 id="titre{{ actualite.id }}" class="articleTitle mt-0 mt-1 text-uppercase text-red marginActuRes">{{ actualite.titre }}</h3></a>
+                                <p class="mt-0 text-uppercase text-red marginActuRes"> {{ actualite.date|date('d/m/Y') }}</p>
+                                <p>{{ actualite.newsletterTextPreview|raw}}</p>
+                                <a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><button class="evok btn-actu-suite mt-3 mb-5">Lire la suite</button></a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div data-id="{{ actualite.id }}" class="article row affichageDesktop mt-3">
+                            <div class="col-lg-6 col-12 pr-3">
+                                <a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><h3 id="titre{{ actualite.id }}" class="articleTitle mt-0 mt-1 text-uppercase text-red marginActuRes">{{ actualite.titre }}</h3></a>
+                                <p class="mt-0 text-uppercase text-red marginActuRes"> {{ actualite.date|date('d/m/Y') }}</p>
+                                <p>{{ actualite.newsletterTextPreview|raw}}</p>
+                                <a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><button class="evok btn-actu-suite mt-3 mb-5">Lire la suite</button></a>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <a href="{{ path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><img src="{{img}}" class="img-fluid"></a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div id="phoneDisplay">
+                {% for actualite in actualites %}
+                    {% set img = '/uploads/actualites/'~actualite.imgPrev %}
+                        <div class="row affichagePhone">
+                            <div class="col-lg-6 col-12">
+                                <a href="{{ path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><img src="{{img}}" class="img-fluid"></a>
+                            </div>
+                            <div class="col-lg-6 col-12 mt-2">
+                                <h3 class="articleTitle mt-0 text-uppercase text-red marginActuRes">{{ actualite.titre }}</h3>
+                                <p class="mt-0 text-uppercase text-red marginActuRes"> {{ actualite.date|date('d/m/Y') }}</p>
+                                <p>{{ actualite.newsletterTextPreview|raw}}</p>
+                                <a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><button class="evok btn-actu-suite mt-3 mb-5">Lire la suite</button></a>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>#}
+
+
+
+
+
+
+        </div>
+        <div class="pagined">
+            {% for i in 1..nbPages %}
+                <a href="{{ path('actualites_index_page', {'page': i}) }}"><button class="evok btn-actu-suite">{{ i }}</button></a>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <!-- SnapWidget -->
+    <script src="https://snapwidget.com/js/snapwidget.js"></script>
+
+    {#CALENDRIER #}
+
+    <script>
+
+        let h = document.querySelector('.head')
+        let bg = document.querySelector('.bg')
+        window.onload = () =>{
+
+            h.classList.toggle('head2')
+
+        }
+
+        window.addEventListener('scroll',()=>{
+            let value = window.pageYOffset
+
+            bg.style.top = value*0.1 + 'px';
+
+        })
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                allDay: false,
+                locale: 'fr',
+                plugins: ['dayGrid', 'interaction'],
+                firstDay: 1,
+                height: 'auto',
+                header:
+                    {
+                        left: 'prev',
+                        center: 'title',
+                        right: ',next'
+                    },
+
+
+                dateClick: function (event) {
+
+                    $.ajax({
+                        url: '{{ path('actualites_date_index') }}',
+                        type: 'POST',
+                        data: {date: event.dateStr},
+                        success: function (data) {
+                            $(function () {
+                                if (!data.response == ''){
+                                    $('#test').html(data.response);
+                                }
+
+                            });
+                        },
+                    });
+                },
+
+                events: [
+
+                    {% for actualite in actualites %}
+                    {
+                        allDay: true,
+                        start: '{{ actualite.date|date("Y-m-d") }}',
+                        backgroundColor: '#00adef',
+                        borderColor: 'white',
+                        textColor: 'white',
+                        rendering: 'background',
+                    },
+                    {% endfor %}
+
+                ],
+
+
+            });
+            calendar.render();
+        });
+
+
+    </script>
+
+    <script>
+
+
+        $( document ).ready(function () {
+
+            $('#message-error-search').hide();
+
+
+            {#$("#search-button").on("click", function () {#}
+            {#    // console.log($('#input-search').val().length);#}
+
+            {#    if ( $('#input-search').val().length >= 3){#}
+            {#        console.log($('#input-search').val());#}
+            {#        $('#message-error-search').hide();#}
+
+            {#        // AJAX#}
+            {#        $.ajax({#}
+            {#            url: '{{ path('actualites_search') }}',#}
+            {#            type: 'POST',#}
+            {#            data: {search: $('#input-search').val()},#}
+            {#            success: function (data) {#}
+            {#                $(function () {#}
+            {#                    if (!data.response == ''){#}
+            {#                        $('#test').html(data.response);#}
+            {#                    }#}
+
+            {#                });#}
+            {#            },#}
+            {#        });#}
+
+            {#        $('#input-search').val('');#}
+
+            {#    }else{#}
+            {#        $('#message-error-search').show();#}
+            {#        $('#input-search').val('');#}
+            {#    }#}
+
+            {#})#}
+
+
+            if (window.matchMedia("(min-width: 992px)").matches) {
+                $('#phoneDisplay').hide();
+                $('#computerDisplay').show();
+            } else {
+                $('#computerDisplay').hide();
+                $('#phoneDisplay').show();
+            }
+
+            $( window ).resize(function() {
+                if (window.matchMedia("(min-width: 992px)").matches) {
+                    $('#phoneDisplay').hide();
+                    $('#computerDisplay').show();
+                } else {
+                    $('#computerDisplay').hide();
+                    $('#phoneDisplay').show();
+                }
+            });
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+
+    <script>
+
+        $('.article').mouseenter(function (e) {
+            let dataid = $(this).data('id');
+            $Titre = $('#titre'+dataid);
+            $Titre.css('font-weight', 'bolder');
+
+            // $Titre.animate({
+            //     fontSize: "1.8em"},150,function(){
+            // });
+        });
+
+        $('.article').mouseleave(function (e) {
+            let dataid = $(this).data('id');
+            $Titre = $('#titre'+dataid);
+            $Titre.css('font-weight', 'normal');
+
+            // $Titre.animate({
+            //     fontSize: "1.75em"},150,function(){
+            // });
+        });
+
+    </script>
+
+    <script>
+
+
+        let button = document.querySelector('.butt')
+        let text = document.querySelector('.titreH')
+console.log(scrollY)
+        window.addEventListener('scroll',()=>{
+            if(window.scrollY>50){
+              button.classList.add('dead')
+            }else {
+                button.classList.remove('dead')
+            }
+
+            if(window.scrollY>100){
+                text.classList.add('titreNone')
+            }else {
+                text.classList.remove('titreNone')
+            }
+        })
+
+
+    </script>
+{% endblock %}

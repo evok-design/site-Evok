@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des groupes{% endblock %}
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des groupes</h1>
+                <a href="{{ path('bloc_new') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter un groupe</button></a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-left">Titre</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bloc in blocs %}
+                <tr>
+                    <td class="text-left">{{ bloc.label }}</td>
+                    <td class="text-right">
+                        <a href="{{ path('bloc_edit', {'id': bloc.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                        {{ include('admin/bloc/_delete_form.html.twig', {'slug' : bloc.id}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}

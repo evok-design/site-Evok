@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{creation.htmlTitle }}{% endblock %}
+{% block meta %}
+    {% include "meta.html.twig" with{
+        "metaDescription" : creation.metaDescription,
+        "metaOgTitle" : "",
+        "metaOgDescription" : "",
+        "metaOgImage" : "",
+        "metaOgImageFormat" : "",
+        "metaOgImageWidth" : "",
+        "metaOgImageHeight" : "",
+
+        "metaTwitterDescription" : "",
+        "metaTwitterTitle" : "",
+        "metaTwitterImage" : "",
+    } %}
+{% endblock %}
+
+{% block body %}
+
+
+    <div id="imageHeaderContainer" class="row">
+        <div class="col pl-0 pr-0 position-relative overflow-hidden">
+            <img src="/uploads/creations/{{ creation.imageHeader }}" alt="" class="img-header animated" data-animation="fadeIn">
+        </div>
+    </div>
+    <div class="mt-md-5 mt-2 row">
+        <div class="col-12 col-md-6 pl-0 pr-0">
+
+            {% if creation.slider.id is defined %}
+                <div class="slickCall">
+                    {% for slide in slides %}
+                        <div><img src="/uploads/slider/{{ slide.urlImage}}" alt="{{ slide.description }}" class="img-fluid"></div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <img src="/uploads/creations/{{ creation.imageContent }}" alt="" class="img-fluid">
+            {% endif %}
+
+        </div>
+        <div class="col-12 col-md-6 pl-0 pr-0 description-creation">
+            <h1 class="pb-2 pl-4 pr-2 title-section text-red mt-md-0 mt-4" style="text-transform: uppercase">{{ creation.title }}</h1>
+            <div class="px-4 pt-md-4 pt-2 font-size-creation">{{ creation.description|raw|nl2br }}</div>
+        </div>
+    </div>
+
+    {% if creation.imageCorps2 is not null and creation.description2 is not null %}
+        <div class="row">
+            <div class="col-12 col-md-6 pl-0 pr-0 description-creation">
+                <div class="p-4 font-size-creation">{{ creation.description2|raw|nl2br }}</div>
+            </div>
+            <div class="col-12 col-md-6 pr-0 pl-0">
+                <img src="/uploads/creations/{{ creation.imageCorps2 }}" alt="" class="img-fluid">
+            </div>
+        </div>
+    {% endif %}
+
+    {#{% if creation.video is not null %}#}
+        {#<div class="row">#}
+            {#<div class="col d-flex justify-content-center mt-5">#}
+                {#<iframe width="800" height="400" src="https://www.youtube.com/embed/{{ creation.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+
+            {#</div>#}
+        {#</div>#}
+    {#{% endif %}#}
+
+
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center text-uppercase mt-5 mb-5">Toutes nos réalisations</h3>
+        </div>
+    </div>
+
+    <div class="row realisations-container DesktopCre">
+        {% if(otherCreations|length == 3) %}
+            {% for related in otherCreations %}
+                <div class="col-12 col-md-4 mt-3 mt-md-0 text-center {% if loop.index == 3 %}pr-md-3{% else %}pl-0 pl-md-3 pr-0{% endif %}">
+                    <a  href="{{ path('creation_show', {'slug' : related.slug}) }}">
+                        <div style="height:100%; width:100%;" class="backstretch_image_content" data-img="/uploads/creations/{{ related.imageContent }}"></div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="slickCall2" style="display: none;">
+        {% if(otherCreations|length == 3) %}
+            {% for related in otherCreations %}
+                <div>
+                    <a href="{{ path('creation_show', {'slug' : related.slug}) }}"><img style="height: 100%; width: 100%;" src="/uploads/creations/{{ related.imageContent }}" alt="" class="img-fluid m-auto"></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script>
+        $(document).ready(function(){
+            $('.slickCall').slick({
+                infinite: true,
+                speed: 950,
+                arrows : false,
+                // cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+
+
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                $('.slickCall2').show();
+                $('.realisations-container').hide();
+                $('.slickCall2').slick({
+                    infinite: true,
+                    speed: 950,
+                    arrows : false,
+                    // cssEase: 'linear',
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+
+                $('#imageHeaderContainer').hide();
+            }
+
+
+
+            $('.backstretch_image_content').each(function(){
+                $(this).backstretch($(this).data('img'));
+            });
+
+
+
+
+
+
+
+        });
+    </script>
+
+{% endblock %}

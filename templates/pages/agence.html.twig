@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} | Agence de design {% endblock %}
+
+{% block body %}
+
+    {% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}
+
+    <div class="affichage-desktop" style="display: none">
+        <div class="row mt-5">
+            <div class="col-12 col-lg-6 pl-0 pr-0">
+                <img src="/uploads/Agence/agence_corps.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-lg-6 pl-0 pr-0">
+                <h1 class="pb-2 pl-4 pt-4 pr-4 title-section text-red marginActuRes" style="text-transform: uppercase">l'agence evok</h1>
+                <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Située sur le Dynapôle de Ludres – Fléville, à proximité de Nancy, Evok est historiquement une agence de design industriel. Depuis 10 ans, Evok accompagne ses clients dans leur communication, qu'elle soit digitale ou print.</p>
+                <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Depuis sa création en 1997. Elle exerce l’activité de designer au sens large : produit, transport, espace. Notre regard de designers porte sur la réflexion ergonomique et l’utilisation par un public. Lorsque l’on utilise un objet du quotidien, que l’on évolue dans un espace ou que l’on navigue sur un site internet, la démarche reste la même : l’utilisateur ne doit pas se poser de questions et appréhender le produit avec intuitivité.</p>
+            </div>
+        </div>
+
+{#        <div class="row">#}
+{#            <div class="col-12 col-lg-6 pl-0 pr-0">#}
+{#                <h1 class="pb-2 pl-4 pt-4 pr-4 title-section text-red marginActuRes" style="text-transform: uppercase">AGENCE DE DESIGN INDUSTRIEL ET PRODUIT</h1>#}
+{#                <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Depuis sa création en 1997. Elle exerce l’activité de designer au sens large : produit, transport, espace. Notre regard de designers porte sur la réflexion ergonomique et l’utilisation par un public. Lorsque l’on utilise un objet du quotidien, que l’on évolue dans un espace ou que l’on navigue sur un site internet, la démarche reste la même : l’utilisateur ne doit pas se poser de questions et appréhender le produit avec intuitivité.</p>#}
+{#            </div>#}
+{#            <div class="col-12 col-lg-6 pl-0 pr-0">#}
+{#                <img src="/img/equipe_2.jpg" alt="" class="img-fluid">#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+
+    <div class="affichage-mobile" style="display: none">
+        <div class="row mt-5">
+            <div class="col-12 col-lg-6 pl-0 pr-0">
+                <h1 class="pb-2 pl-4 pt-4 pr-4 title-section text-red" style="text-transform: uppercase">l'agence evok</h1>
+                <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Située sur le Dynapôle de Ludres – Fléville, à proximité de Nancy, Evok est historiquement une agence de design industriel. Depuis 10 ans, Evok accompagne ses clients dans leur communication, qu'elle soit digitale ou print.</p>
+                <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Depuis sa création en 1997. Elle exerce l’activité de designer au sens large : produit, transport, espace. Notre regard de designers porte sur la réflexion ergonomique et l’utilisation par un public. Lorsque l’on utilise un objet du quotidien, que l’on évolue dans un espace ou que l’on navigue sur un site internet, la démarche reste la même : l’utilisateur ne doit pas se poser de questions et appréhender le produit avec intuitivité.</p>
+            </div>
+            <div class="col-12 col-lg-6 pl-0 pr-0">
+                <img src="/uploads/Agence/agence_corps.jpg" alt="" class="img-fluid">
+            </div>
+
+        </div>
+
+{#        <div class="row">#}
+{#            <div class="col-12 col-lg-6 pl-0 pr-0">#}
+{#                <div class="col-12 col-lg-6 pl-0 pr-0">#}
+{#                    <h1 class="pb-2 pl-4 pt-4 pr-4 title-section text-red mt-1" style="text-transform: uppercase">AGENCE DE DESIGN INDUSTRIEL ET PRODUIT</h1>#}
+{#                    <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Depuis sa création en 1997. Elle exerce l’activité de designer au sens large : produit, transport, espace. Notre regard de designers porte sur la réflexion ergonomique et l’utilisation par un public. Lorsque l’on utilise un objet du quotidien, que l’on évolue dans un espace ou que l’on navigue sur un site internet, la démarche reste la même : l’utilisateur ne doit pas se poser de questions et appréhender le produit avec intuitivité.</p>#}
+{#                </div>#}
+{#                <img src="/img/equipe_2.jpg" alt="" class="img-fluid">#}
+{#            </div>#}
+
+{#        </div>#}
+    </div>
+
+    <div class="row text-center mt-5 pt-5">
+        <div class="col-12 col-md-4">
+            <div class="text-red" style="text-transform: uppercase">Sébastien</div>
+            <div class="text-red">Gérant</div>
+            <p class="mt-4 text-justify">« J’ai créé l’agence de design Evok en 1997 à l’issue d’un parcours universitaire artistique à l’école nationale des
+                Beaux-Arts de Nancy. Mon ambition était d’apporter une réponse industrielle compatible avec les problématiques environnementales. Depuis
+                plus de vingt ans, l’agence Evok s’est bâtie une solide réputation dans le domaine de l’écodesign. En 2010, l’agence a développé son offre de
+                design global en proposant des prestations de communication, web et multimédia associées au design produit ».
+            </p>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="text-red" style="text-transform: uppercase">Samuel</div>
+            <div class="text-red">Designer industriel</div>
+            <p class="mt-4 text-justify"> Issu d’une formation dans les métiers arts et diplômé de l’École Nationale Supérieure
+                d’Art et de Design de Nancy,  Samuel porte une attention toute particulière à l’observation des usages ainsi qu’à la
+                conception collaborative au sein d’un projet de design. Musicien depuis de nombreuses années et passionné par le dessin,
+                il aime la création sous toutes ses formes.
+            </p>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="text-red" style="text-transform: uppercase">Gaspar</div>
+            <div class="text-red">Designer industriel</div>
+            <p class="mt-4 text-justify">
+                Directement venu du Sud de la France, passioné par la création graphique, Gaspar a décidé d'aller plus loin
+                pour s'orienter dans la création de produits.
+                Ce qu'il aime, c'est manipuler les objets, intéragir avec eux, les perfectionner pour que leurs usages
+                correspondent au mieux aux besoins qu'ils doivent satisfaire.
+
+            </p>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="text-blue" style="text-transform: uppercase">Diana</div>
+            <div class="text-blue">Designer graphique</div>
+            <p class="mt-4 text-justify">Passionnée par l'aquarelle depuis son plus jeune âge, Diana a toujours été sensible à l'art graphique.
+                Diplômée d'une licence en Information et Communication spécialisée dans la communication des entreprises,
+                son esprit créatif vous permettra de toujours vous démarquer de vos concurrents.
+            </p>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="text-blue" style="text-transform: uppercase">Elouan</div>
+            <div class="text-blue">Développeur Web</div>
+            <p class="mt-4 text-justify">Passionné par l'informatique et les nouvelles technologies, Elouan est actuellement
+                en alternance chez Evok dans le cadre de sa formation MIAGE. Son dynamisme et sa bonne humeur sont au rendez vous
+                pour accueillir les différentes demandes des clients.
+            </p>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="text-blue" style="text-transform: uppercase">Déborah</div>
+            <div class="text-blue">Assistante administrative</div>
+            <p class="mt-4 text-justify">Déborah est votre premier contact avec notre agence. A l’écoute et organisée, elle vous renseigne sur les savoir-faire de
+                l’agence et s’occupe de la gestion administrative d’Evok. Elle est en alternance au CNAM de Nancy.
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+
+
+
+        $(document).ready(function(e) {
+
+            if (window.matchMedia("(min-width: 992px)").matches) {
+                $(".affichage-desktop").show();
+                $(".affichage-mobile").hide();
+
+            }
+            else {
+                $('.affichage-mobile').show();
+                $('.affichage-desktop').hide();
+            }
+        });
+    </script>
+{% endblock %}

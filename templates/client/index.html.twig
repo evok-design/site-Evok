@@ -1,0 +1,50 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des clients</h1>
+                <a href="{{ path('client_new') }}" class="btn btn-primary"> <i class="fa fa-plus"></i> Ajouter un client</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>
+                                {#<a href="{{ path('client_show', {'id': client.id}) }}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>#}
+                                <a href="{{ path('client_edit', {'id': client.id}) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                {{ include('/client/_delete_form.html.twig', {'id' : client.id}) }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

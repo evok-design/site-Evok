@@ -1,0 +1,11 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="text-center">
+        <div class="text-error-principale">{{ status_code }}</div>
+        <div class="text-error-scd text-uppercase text-center">Oups ! Une erreur est apparue, nous sommes désolés pour les désagréments causés, n'hésitez pas à cliquer sur le bouton.</div>
+        <a href="{{ path('index') }}"><button class="evok mt-5">Retour à l'accueil</button></a>
+    </div>
+
+{% endblock %}

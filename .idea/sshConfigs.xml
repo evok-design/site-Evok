@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="de2762.ispfr.net" id="5fa895df-911e-4b12-bd40-3518aa4f4e65" port="22" customName="evok-design" nameFormat="CUSTOM" username="root" />
+      <sshConfig authType="PASSWORD" host="de2762.ispfr.net" id="19ad2730-6cd1-4dfc-abe1-2f8b7d0344ab" port="22" customName="evok-design" nameFormat="CUSTOM" username="root" />
+    </configs>
+  </component>
+</project>

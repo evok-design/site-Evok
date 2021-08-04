@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titre }}</title>
+    <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+    <link rel="icon" type="image/jpg" href="{{ asset('img/favicon.jpg') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/animated/animated.min.css') }}">
+        {#<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">#}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/fontawesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/slick/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/slick/slick-theme.css') }}">
+        {#<link rel="stylesheet" href="{{ asset('js/tarteaucitron/css/tarteaucitron.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <style>
+
+        body{
+            background-color: black;
+            color: white;
+        }
+
+        h1{
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        img{
+
+            float: left;
+            margin-right: 30px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        hr{
+            color: white;
+        }
+
+        .textNL{
+            margin: 30px 50px 50px 50px;
+            text-align: center;
+        }
+
+        .ptext{
+            color: white;
+            display: inline-block;
+            float: left;
+        }
+
+        .linkNL {
+            color: white;
+            border: 1px solid white;
+            padding: 10px;
+            width: auto;
+            display: inline-block;
+        }
+
+        .socialLink{
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .youtube{
+            margin-top: 8px;
+        }
+
+        .facebook{
+            margin-bottom: 6px;
+        }
+
+        .mainBox{
+            width: 100%;
+            display: flex;
+            margin-top: 75px;
+        }
+
+        .informationBox{
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+
+        .informationBox > p{
+            text-align: right;
+            margin-bottom: -5px;
+        }
+
+
+        .centerBox{
+            display: flex;
+            flex: 2 1 auto;
+            justify-content: center;
+            transform: translateX(-25%);
+        }
+
+        .socialBox{
+            display: flex;
+            flex-direction: row;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+
+        @media screen and (min-width: 940px) {
+            .textNL {
+                margin-top: 150px;
+                text-align: left;
+            }
+        }
+
+
+
+
+
+
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+                <img src="{{ image }}" height="65%" alt="Image actualité">
+
+            <div  class="textNL">
+                <h1><u>{{ titre }}</u></h1>
+                {% autoescape false %}
+                    <p class="ptext" >{{contenu|raw ~ " ..."}}</p>
+                {% endautoescape %}
+
+                <div style="text-align: center;">
+                    <a class="linkNL" href={{ "https://evok-design.evok.fr/actualites/" ~ slug }}>Lire la suite</a>
+                </div>
+
+            </div>
+
+    <hr>
+
+
+    <div class="mainBox">
+
+        <div class="socialBox">
+            <a href="www.evok-design.fr"><img  width="25%" height="25%" src="{{ evokImage }}" alt=""></a>
+        </div>
+
+
+        <div class="centerBox">
+            <div><a class="socialLink" href="https://twitter.com/EVOK_design"><img  width="25px" src="{{ twitter }}" alt="Twitter"></a></div>
+            <div><a class="socialLink" href="https://www.linkedin.com/company/2876531/"><img width="25px" src="{{ linkedin }}" alt="Linkedink"></a></div>
+            <div><a class="socialLink" href="https://www.facebook.com/evokdesign/"><img class="facebook" width="25px"  src="{{ facebook }}" alt="Facebook"></a></div>
+            <div><a class="socialLink" href="https://www.instagram.com/evok_design/"><img width="25px" src="{{ instagram }}" alt="Instagram"></a></div>
+        </div>
+
+        <div class="informationBox">
+            <p >310 rue Pierre et Marie Curie</p>
+            <p>54710 LUDRES</p>
+            <p>+33 3 83 25 24 57</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

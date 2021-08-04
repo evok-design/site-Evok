@@ -1,0 +1,99 @@
+
+
+
+{% for creation in creations|slice(0,8) %}
+
+    {% set img = '/uploads/creations/'~creation.imgBigNb %}
+    {% set img2 = '/uploads/creations/'~creation.image1 %}
+    <div class="col-lg-6 col-12 px-1 animated position-relative creations-container mt-2">
+        <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+            <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+                <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+            </div>
+        </a>
+    </div>
+
+{% endfor %}
+
+
+
+
+        {#}
+        {% for creation in creations|slice(1,1) %}
+
+            {% set img = '/uploads/creations/'~creation.imgSmallNb %}
+            {% set img2 = '/uploads/creations/'~creation.image2 %}
+
+            {% set imgMobile = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img2Mobile = '/uploads/creations/'~creation.image1 %}
+
+            <div class="col-lg-6 col-12 animated position-relative creations-container">
+                <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                    <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+                        <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                        <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                    </div>
+                </a>
+            </div>
+
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="row mt-4 mb-4">
+
+        {% for creation in creations|slice(2,1) %}
+            {% set img = '/uploads/creations/'~creation.imgSmallNb %}
+            {% set img2 = '/uploads/creations/'~creation.image2 %}
+
+
+            {% set imgMobile = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img2Mobile = '/uploads/creations/'~creation.image1 %}
+
+            <div class="col-lg-6 col-12 animated position-relative creations-container">
+                <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                    <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+                        <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                        <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+        {% for creation in creations|slice(3,1) %}
+            {% set img = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img2 = '/uploads/creations/'~creation.image1 %}
+            <div class="col-lg-6 col-12 animated position-relative creations-container">
+                <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                    <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+                        <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                        <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                    </div>
+                </a>
+            </div>
+
+        {% endfor %}
+        {#}
+
+
+<script>
+
+    $('.creation').on('mouseenter', function(){
+        var creationId = '#'+$(this).data('id');
+        $(creationId).hide();
+        $(creationId+'bis').show();
+    });
+    $('.creation').on('mouseleave', function(){
+        var creationId = '#'+$(this).data('id');
+        $(creationId).show();
+        $(creationId+'bis').hide();
+    });
+
+
+</script>
+
+

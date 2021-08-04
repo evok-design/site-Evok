@@ -1,0 +1,44 @@
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol.example li.placeholder {
+    position: relative;
+    /** More li styles **/
+}
+ol.example li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+}
+
+label{
+    font-weight: bold;
+}
+
+.borderLink{
+    border: black 1px solid;
+}
+
+.Deco{
+    display: none;
+    z-index: 99;
+    position: absolute;
+    top:40px;
+    left: 0;
+    background-color: white;
+    border: #138496 solid 1px;
+    -moz-box-shadow: 5px 5px 5px 5px #343434;
+    -webkit-box-shadow: 5px 5px 5px 5px #343434;
+    -o-box-shadow: 5px 5px 5px 5px #343434;
+    box-shadow: 5px 5px 5px 5px #343434;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=134, Strength=5);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}

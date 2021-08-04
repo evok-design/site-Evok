@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creation index{% endblock %}
+{% block body %}
+    <h1>Creation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for creation in creations %}
+            <tr>
+                <td>{{ creation.id }}</td>
+                <td>{{ creation.title }}</td>
+                <td>{{ creation.description }}</td>
+                <td>
+                    <a href="{{ path('creation_show', {'slug': creation.slug}) }}">show</a>
+                    <a href="{{ path('creation_edit', {'slug': creation.slug}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('creation_new') }}">Create new</a>
+{% endblock %}

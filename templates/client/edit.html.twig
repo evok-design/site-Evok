@@ -1,0 +1,30 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Modifier un client{% endblock %}
+
+{% block body %}
+
+    {% include 'admin/menu.html.twig' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="{{ path('client_index_admin') }}" class="btn btn-secondary"> <i class="fa fa-chevron-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <h1>Modifier {{ client.name }}</h1>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                {{ include('client/_form.html.twig', {'button_label': 'Update'}) }}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

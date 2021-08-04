@@ -1,0 +1,288 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} Contact devis agence communication{% endblock %}
+{% block meta %}
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+{% block body %}
+
+    {% include 'header.html.twig' with {'title': 'Contact', 'img' : 'uploads/Contact/contact_header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz'} %}
+
+    <div class="row position-relative">
+        <div id="map"></div>
+        <div class="col-12 col-md-6 pr-md-0">
+            <div class="box-contact p-4">
+                <div class="row">
+                    <div class="col">
+                        <img src="{{ asset('img/logo.svg') }}" alt="" class="img-fluid logo">
+                    </div>
+                    <div class="col">
+                        <p> 310 rue Pierre et Marie Curie<br/>
+                            54710 Dynapôle - Ludres<br/>
+                            +33 3 83 25 24 57
+                        </p>
+                    </div>
+                </div>
+                {% for label, messages in app.flashes(['success', 'danger']) %}
+                    {% for message in messages %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {{ form_start(form, {'multipart': true}) }}
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-12 col-lg-6">
+                        {{ form_label(form.subject) }}
+                        {{ form_widget(form.subject) }}
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        {{ form_label(form.attachment) }}
+                        <div class="input-group">
+                            <div class="custom-file">
+                                {{ form_widget(form.attachment, {'attr': {'class' :'custom-file-input', 'aria-describedby' : 'contact_attachment', "name" : "contact_attachment", 'onchange' : 'changeLabel()'} } ) }}
+                                <label class="custom-file-label" id="labelPJ" for="contact_attachment" name="contact_attachment">Choisir un fichier</label>
+                            </div>
+                            </dv>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-3">
+                    <div class="col">
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message) }}
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col is-flex">
+                        <input type="checkbox" id="consent" name="consent" class="form-control" required>
+                        <label for="consent">En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées, exploitées, traitées pour permettre de me contacter dans le cadre de la relation qui découle de cette prise de contact.
+                        </label>
+                    </div>
+                </div>
+                <div class="row pt-3 captcha">
+                    <div class="col">
+                        <div class="g-recaptcha" data-sitekey="6LeGU6oUAAAAANLZEFV8IzQRgJcdrGl8fYnFDx43"></div>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col">
+                        <button class="evok" type="submit">Envoyer</button>
+                    </div>
+                </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
+    <script>
+
+        function changeLabel(){
+
+
+            let name = $('#contact_attachment').val();
+            name = name.split('\\');
+            name = name[name.length-1];
+
+            $('#labelPJ').html(name);
+
+            if ($('#labelPJ').html() == ''){
+                $("#labelPJ").html('Choisir un fichier');
+            }
+
+
+        };
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXZva2Rlc2lnbiIsImEiOiJjam9zZnR1bnEwbnhjM3BrZnNlbmVtdDlhIn0.TftkQiIgK0xwd74XV4WDqg';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/evokdesign/cjt8nnayl00kz1fmn2ogab5dj',
+            center: [-71.020000, 42.362400],
+            center: [6.0,48.6176515],
+            zoom: 10.0
+        });
+
+        //AJOUT DE MARQUEUR
+        var geojson = {
+
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "iconSize": [40, 51],
+                        "icon" : 'url(/img/logo_rounded.png)',
+                        "description": "<strong>Evok Design</strong><p>310 Rue Pierre et Marie Curie,<br/>54710 Ludres</p>",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            6.184596,
+                            48.6176515
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "iconSize": [40, 51],
+                        "icon" : 'url(/img/logo-tgv.png)',
+                        "description": "<strong>TGV</strong><p>310 Rue Pierre et Marie Curie,<br/>54710 Ludres</p>",
+
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            6.1722613,
+                            48.689836
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "iconSize": [40, 51],
+                        "icon" : 'url(/img/logo_rounded.png)',
+                        "description": "<strong>Evok International</strong><p>8 Place de l'Hôpital<br/>67000 Strasbourg</p>",
+
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [7.749755427637297, 48.5775390791604]
+                    }
+                }
+            ]
+        };
+
+        mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
+        map.addControl(new MapboxLanguage({
+            defaultLanguage: 'fr'
+        }));
+
+        // AJOUT DE MARQUEUR
+        geojson.features.forEach(function(marker) {
+            // create a DOM element for the marker
+            var el = document.createElement('div');
+            el.className = 'marker';
+            el.style.backgroundImage = marker.properties.icon;
+            el.style.width = marker.properties.iconSize[0] + 'px';
+            el.style.height = marker.properties.iconSize[1] + 'px'
+
+            el.addEventListener('click', function() {
+                //Fonction appelée au clic d'une icone
+            });
+
+            // add marker to map
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+        });
+
+        // AFFICHAGE D'UNE POPUP AU CLIC
+        map.on('load', function () {
+
+            map.addLayer({
+                "id": "places",
+                "type": "symbol",
+                "source": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": [
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "description": "<strong>Evok Design</strong><p>310 Rue Pierre et Marie Curie,<br/>54710 Ludres</p>",
+                                    "icon": "marker"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [6.184596, 48.6176515]
+                                }
+                            },
+                            {
+
+                                "type": "Feature",
+                                "properties": {
+                                    "description": "<strong>TGV</strong><p>Nancy, à 1h30 de PARIS.</p>",
+                                    "icon": "marker"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [6.1722613,48.689836]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {
+                                    "description": "<strong>Evok International</strong><p>8 Place de l'Hôpital<br/>67000 Strasbourg</p>",
+                                    "icon": "marker"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [7.749755427637297, 48.5775390791604]
+                                }
+                            },
+                        ]
+                    }
+                },
+                "layout": {
+                    "icon-image": "{icon}-15",
+                    "icon-allow-overlap": true,
+                }
+            });
+
+            map.on('click', 'places', function (e) {
+                // map.flyTo({center: e.features[0].geometry.coordinates});
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.description;
+
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+            map.addControl(new mapboxgl.NavigationControl());
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+
+    </script>
+{% endblock %}

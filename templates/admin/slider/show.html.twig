@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Slider{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-left">
+                <a href="{{ path('slider_index') }}" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Retour à la liste</a>
+                <h1> édition du slider : {{ slider.name }} (id: {{ slider.id }}) </h1>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col">
+                <h3>Liste des photos dans le slider</h3>
+            </div>
+        </div>
+        {#<div class="row">#}
+            {#{% for slide in slides %}#}
+                {#<div class="col-3 mt-5">#}
+                    {#<a href="{{ path('slide_edit', {'id':'slide.id'}) }}"><img class="img-fluid " src="/uploads/slider/{{ slide.urlImage}}"> </a>#}
+                    {#<p> slider associé: {{ slide.slider.name }}</p>#}
+                    {#<a href="{{ path('slide_delete', {'id':'slide.id'}) }}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>#}
+                {#</div>#}
+            {#{% endfor %}#}
+        {#</div>#}
+        <div class="row mt-5">
+            <div class="col text-left">
+                {{ include('admin/slider/_delete_form.html.twig') }}
+                {#{{ include('admin/slide/_form.html.twig', {'button_label': 'Ajouter une photo'}) }}#}
+            </div>
+        </div>
+    </div>
+{% endblock %}

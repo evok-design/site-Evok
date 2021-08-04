@@ -1,0 +1,15 @@
+#swiftmailer:
+#    transport: smtp
+#    host: 127.0.0.1
+#    username: ~
+#    password: ~
+
+
+swiftmailer:
+    transport: smtp
+    auth_mode: login
+    port: 587
+    host: ns0.ovh.net
+    username: noreply@evok.fr
+    password: deMTX977i
+    spool: { type: 'memory' }  

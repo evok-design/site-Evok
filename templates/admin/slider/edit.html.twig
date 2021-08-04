@@ -1,0 +1,124 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Editer un slider{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-left">
+                <a href="{{ path('slider_index') }}" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <h1>Modifier {{ slider.name }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ include('admin/slider/_form.html.twig', {'button_label': 'Modifier', 'attr' : {'class' : 'btn btn-success'}}) }}
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col borderLink pt-4">
+                <h3>Liste des pages utilisant ce slider</h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Creation</th>
+                        <th scope="col">Actualité</th>
+                        <th scope="col">Bloc</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {% if creation.0 is defined %}
+                            <td>{{ creation.0.title }}<br>
+                                <a href="{{ path('slider_delete_associationPage', {'id' : creation.0.slider.id ,'page': 'creation'}) }}"><bouton class="btn btn-danger">Enlever le slider de cette page</bouton></a>
+                            </td>
+                        {% else %}
+                            <td>Aucune</td>
+                        {% endif %}
+
+                        {% if actu.0 is defined %}
+                            <td>{{ actu.0.titre }}<br>
+                            <a href="{{ path('slider_delete_associationPage', {'id' : actu.0.slider.id,'page': 'actualites'}) }}"><bouton class="btn btn-danger">Enlever le slider de cette page</bouton></a>
+                        {% else %}
+                            <td>Aucune</td>
+                        {% endif %}
+
+                        {% if bloc.0 is defined %}
+                            <td>{{ bloc.0.label }}<br>
+                            <a href="{{ path('slider_delete_associationPage', {'id' : bloc.0.slider.id, 'page': 'bloc'}) }}"><bouton class="btn btn-danger">Enlever le slider de cette page</bouton></a>
+                        {% else %}
+                            <td>Aucune</td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <a href="{{ path('slider_add_picture', {'slider' : slider.id}) }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter une photo à {{ slider.name }}</button></a>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <h3>Liste des photos du slider</h3>
+                <div class="alert-info">Vous pouvez drag and drop les images afin de modifier l'ordre d'affichage dans le slider</div>
+                <ol class="sortable row">
+                    {% for slide in slides %}
+                        <div data-id="{{ slide.id }}" class="col-3 mt-5">
+                            <a href="{{ path('slide_edit', {'id':slide.id}) }}"><img class="img-fluid " src="/uploads/slider/{{ slide.urlImage}}"> </a>
+                            {{ include('admin/slide/_delete_form.html.twig', {'id' : slide.id }) }}
+                        </div>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+        var group = $("ol.sortable").sortable({
+            group: 'sortable',
+            onDrop: function ($item, container, _super) {
+                var test = container.el[0];
+
+                var tabindex = [];
+
+
+                $(test).children().each(function (index) {
+                    tabindex.push($(this).data('id'));
+                });
+
+
+                $.ajax({
+                    url:"{{ path('slide_tabindex', {'id':slider.id}) }}",
+                    type: "POST",
+                    data:{
+                        tabindex : tabindex
+                    },
+                });
+
+                _super($item, container);
+            },
+            serialize: function (parent, children, isContainer) {
+                return isContainer ? children.join() : parent.text();
+            },
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,284 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creation index{% endblock %}
+
+{% block body %}
+
+    <div id="select-category-container" class="mb-4">
+        <div class="row mx-auto" id="sub-select-category-container">
+            <span data-nbcreations="{{ allCreations|length }}" data-value="all" class="text-center categories activeCategory">Toutes</span>
+            {% for categorie in categories|slice(0,5) %}
+                <span data-nbcreations="{{ nbCreationsInCategories[loop.index0] }}" data-value="{{ categorie.id }}" class="text-center categories">{{ categorie.label }}</span>
+            {% endfor %}
+        </div>
+
+            <select id="select-category" class="custom-select col-6">
+                <option value="all" selected>TOUTES</option>
+                {% for categorie in categories %}
+                    <option data-nbcreations="{{ nbCreationsInCategories[loop.index0] }}" value="{{ categorie.id }}">{{ categorie.label }}</option>
+                {% endfor %}
+            </select>
+
+
+    </div>
+
+
+    <div class="row scrollPrint" id="scrollPrint" data-id="0">
+        {% for creation in creations|slice(0,8) %}
+
+            {% set img = '/uploads/creations/'~creation.imgBigNb %}
+            {% set img2 = '/uploads/creations/'~creation.image1 %}
+
+            <div class="col-lg-6 col-12 animated position-relative creations-container mt-2 px-1">
+                <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                    <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+                        <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                        <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {#}{% for creation in creations|slice(1,1) %}
+
+        {% set img = '/uploads/creations/'~creation.imgSmallNb %}
+        {% set img2 = '/uploads/creations/'~creation.image2 %}
+
+        {% set imgMobile = '/uploads/creations/'~creation.imgBigNb %}
+        {% set img2Mobile = '/uploads/creations/'~creation.image1 %}
+
+        <div class="col-lg-6 col-12 animated position-relative creations-container">
+            <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                <div class="creation" data-id="{{ creation.id }}" style=" width: 100%;">
+                    <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                    <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                </div>
+            </a>
+        </div>
+
+    {% endfor %}
+
+</div>
+
+
+<div class="row mt-4 mb-4 scrollPrint" data-id="0">
+
+    {% for creation in creations|slice(2,1) %}
+        {% set img = '/uploads/creations/'~creation.imgSmallNb %}
+        {% set img2 = '/uploads/creations/'~creation.image2 %}
+
+        {% set imgMobile = '/uploads/creations/'~creation.imgBigNb %}
+        {% set img2Mobile = '/uploads/creations/'~creation.image1 %}
+
+        <div class="col-lg-6 col-12 animated position-relative creations-container">
+            <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+
+                    <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                    <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+    {% for creation in creations|slice(3,1) %}
+        {% set img = '/uploads/creations/'~creation.imgBigNb %}
+        {% set img = '/uploads/creations/'~creation.imgBigNb %}
+        {% set img2 = '/uploads/creations/'~creation.image1 %}
+        <div class="col-lg-6 col-12 animated position-relative creations-container">
+            <a href="{{ path('creation_show', {'slug' : creation.slug}) }}">
+                <div class="creation" data-id="{{ creation.id }}" style="width: 100%;">
+
+                    <img src="{{ img }}" id="{{ creation.id }}" style="width: 100%;"/>
+                    <img src="{{ img2 }}" id="{{ creation.id }}bis" style="width: 100%; display: none;"/>
+                </div>
+            </a>
+        </div>
+
+    {% endfor %}
+    {#}
+
+
+
+
+
+    <div id="contentLoaded" class="text-center mt-5" style="display: none">
+        <span class="spinner-border mr-2" role="status" aria-hidden="true" style="border-width: 1px;width: 18px;height: 18px; vertical-align: middle;"></span>Chargement...
+    </div>
+    {#{% if creationsAll|length > 6 %}#}
+    {#<div class="row">#}
+    {#<div class="col text-center"> <button id="loadContent" class="evok">Voir plus</button> </div>#}
+    {#</div>#}
+    {#{% endif %}#}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+
+        $(document).ready(function(e) {
+
+
+
+            var nbCreationsMax = "{{ allCreations|length }}";
+            var nbCreationsCurrent = $('.creation').length;
+
+
+            //On adapte la taille des rubriques du menu en fonction de leur nombre
+            let nbCategories = $('.categories').length;
+            let width = 100/nbCategories;
+            $('.categories').css('width', width+'%');
+
+
+            //On adapte la requete ajax lorsqu'on change de catégorie en fonction du responsive
+            if($("#sub-select-category-container").is(":visible")){
+                $('.categories').on('click', function(){
+                    $('.categories').removeClass('activeCategory');
+                    $(this).addClass('activeCategory');
+
+                    nbCreationsMax = $(this).data('nbcreations');
+                    console.log(nbCreationsMax);
+
+                    var selectedCategory = $(this).data('value');
+                    var scrollPrints = $('.scrollPrint');
+                    if(scrollPrints.length > 1){
+                        scrollPrints.each(function(){
+                            $(this).css('display', 'none');
+                        })
+                    }
+                    // console.log(scrollPrints[0].style.display);
+                    scrollPrints[0].style.display = "flex";
+
+                    $('.creations-container').remove();
+                    $.ajax({
+                        type : "POST",
+                        url: "{{  path('creations_load_by_category') }}",
+                        data: {category: selectedCategory}
+                    }).done(function(creations){
+                        $('#scrollPrint').html(creations.response);
+                        $('#contentLoaded').hide();
+
+                    });
+
+                    nbCreationsCurrent = $('.creation').length;
+                });
+            }else if($("#select-category").is(":visible")){
+                $('#select-category').on('change', function(){
+                    nbCreationsMax = $(this).find(':selected').data('nbcreations');
+                    var selectedCategory = $('#select-category').val();
+                    var scrollPrints = $('.scrollPrint');
+                    if(scrollPrints.length > 1){
+                        scrollPrints.each(function(){
+                            $(this).css('display', 'none');
+                        })
+                    }
+                    console.log(scrollPrints[0].style.display);
+                    scrollPrints[0].style.display = "flex";
+                    $('.creations-container').remove();
+                    $.ajax({
+                        type : "POST",
+                        url: "{{  path('creations_load_by_category') }}",
+                        data: {category: selectedCategory}
+                    }).done(function(creations){
+                        $('#scrollPrint').html(creations.response);
+                        $('#contentLoaded').hide();
+                    });
+
+                    nbCreationsCurrent = $('.creation').length;
+                });
+
+            }
+
+
+            //On regarde quel est le device utilisé
+            let deviceAgent = navigator.userAgent.toLowerCase();
+            let agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
+            let heightFoot = $('#footer').height();
+
+
+
+            //SYSTEME DE CHARGEMENT ON SCROLL
+            var index = 0;
+            var stop = false;
+
+
+            //On regarde si l'utilisateur scroll
+            $(window).scroll(function(){
+
+                //On regarde s'il scroll jusqu'en bas de la page
+                if (($(window).scrollTop() + $(window).height()) + heightFoot > $(document).height()  || agentID && ($(window).scrollTop() + $(window).height()) + heightFoot + 150 > $(document).height()){
+
+                    //On regarde combien de créations sont affichées
+                    nbCreationsCurrent = $('.creation').length;
+
+                    //On check si toutes les creations de la catégorie sont chargées
+                    if(nbCreationsCurrent < nbCreationsMax && stop != true){
+
+                        $('#contentLoaded').show();
+
+
+
+                        //On regarde quelle catégorie est sélectionnée
+                        var selectedCategory;
+                        if($("#sub-select-category-container").is(":visible")) {
+                            var categories =  $('.categories');
+                            categories.each(function(){
+                                if($(this).hasClass('activeCategory')){
+                                    selectedCategory = $(this).data('value');
+                                }
+                            })
+                        }else if($("#select-category").is(":visible")){
+                            selectedCategory = $('#select-category').val();
+                        }
+
+                        stop = true;
+
+                        //On fait la requête pour charges les creations suivantes
+                        $.ajax({
+                            type: "POST",
+                            url: "{{path('creations_load')}}",
+                            data: {begin: $('.creations-container').length, i:index, category: selectedCategory},
+                        }).done(function(creations){
+
+                            //On afficher les creations suivantes
+                            $(".scrollPrint[data-id='"+index+"']").after(creations.response);
+                            index++;
+                            $(".scrollPrint[data-id='"+index+"']").fadeIn(1000);
+
+                            stop = false;
+
+                            //On cache le loader
+                            $('#contentLoaded').hide();
+
+                        }).fail(function(){
+                            stop = true;
+                            //On cache le loader
+                            $('#contentLoaded').hide();
+                        });
+
+                    }
+                }
+
+            })
+
+
+            $('.creation').on('mouseenter', function(){
+                var creationId = '#'+$(this).data('id');
+                $(creationId).hide();
+                $(creationId+'bis').show();
+            });
+            $('.creation').on('mouseleave', function(){
+                var creationId = '#'+$(this).data('id');
+                $(creationId).show();
+                $(creationId+'bis').hide();
+            });
+        });
+
+
+
+
+    </script>
+{% endblock %}

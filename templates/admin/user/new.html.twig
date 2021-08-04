@@ -1,0 +1,43 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="card mt-5">
+        <div class="card-body form-group">
+            {{ include('admin/user/_form.html.twig') }}
+        </div>
+    </div>
+
+    <a href="{{ path('creation_index_admin') }}"><button class="btn btn-info mt-3"><i class="fas fa-home mr-1"></i>Retour à l'accueil</button></a>
+
+
+    <div class="ListeUser mt-5">
+        <h1>Liste des utilisateurs</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">E-mail</th>
+                <th scope="col" class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td class="text-right">
+                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                        {{ include('admin/user/_delete_form.html.twig', {'id' : user.id}) }}
+                    </td>            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
