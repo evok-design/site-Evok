@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b18cb79-efdd-4edd-87b0-0a8d61bbe015" name="Default Changelist" comment="">
+    <list default="true" id="6b18cb79-efdd-4edd-87b0-0a8d61bbe015" name="Default Changelist" comment="first commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html.twig" afterDir="false" />
@@ -146,7 +146,7 @@
         <counts>
           <entry key="css" value="2437" />
           <entry key="env" value="9" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="7" />
           <entry key="php" value="103" />
           <entry key="twig" value="1508" />
           <entry key="txt" value="13" />
@@ -157,7 +157,7 @@
           <entry key=".env file" value="9" />
           <entry key="CSS" value="2437" />
           <entry key="PHP" value="103" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="PLAIN_TEXT" value="20" />
           <entry key="Twig" value="1508" />
         </counts>
       </usages-collector>
@@ -251,8 +251,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+            <state relative-caret-position="150">
+              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -635,12 +635,12 @@
       <workItem from="1591617494450" duration="119000" />
       <workItem from="1591618115078" duration="54000" />
       <workItem from="1591619462815" duration="312000" />
-      <workItem from="1627898249112" duration="59269000" />
+      <workItem from="1627898249112" duration="59650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59269000" />
+    <option name="totallyTimeSpent" value="59650000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -903,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        <state relative-caret-position="150">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
