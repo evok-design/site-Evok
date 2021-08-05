@@ -6,18 +6,21 @@
 
     {#{% include 'header.html.twig' with {'title': 'événements', 'img' : 'uploads/Events/header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
     {% set head = '/uploads/actualites/'~header.imgHeader %}
-    <section>
+
 <section class="bg">
 
-    <div class="head" style=" background: url('{{ head}}');"></div>
-    <div class="titreH">
-        <div class="line">
-            <span class="petit">design</span>
-            <span class="grand">news</span>
+    <div class="head" style=" background: url('{{ head}}');">
+        <div class="titreH">
+            <div class="line">
+                <span class="petit">design</span>
+                <span class="grand">news</span>
+            </div>
+            {# <i class="far fa-angle-down"></i>#}
         </div>
-        {# <i class="far fa-angle-down"></i>#}
+        <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt">Lire l'article</a>
     </div>
-    <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt">Lire l'article</a>
+
+
 
 </section>
 
@@ -26,13 +29,14 @@
         <div class="row px-xl-5 mx-xl-4" >
             {% for actualite in actualites %}
                 {% set img = '/uploads/actualites/'~actualite.imgPrev %}
-            <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-1 pl-0 pr-1" >
+            <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-1 pl-0 pr-1 act" >
                 <div id="fond" >
                     <img src="{{img}}" class="img-fluid2" >
                     <a href="{{  path('actualites_show', {'slug':  actualite.slug, 'page': page}) }}" class="butt2">Lire l'article</a>
                 </div>
 
-                <div class="containeurTitre text-left"><a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}" class="petitTitre">{{ actualite.titre }}</a></div>
+                <div class=" text-left my-2 "><a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}" class="petitTitre">{{ actualite.titre | truncate(20)}}</a></div>
+                <div class="containeurTitre text-left grandTitre">{{ actualite.titre | truncate(100)}}</div>
                 {#<p class="mt-0 text-uppercase text-red marginActuRes"> {{ actualite.date|date('d/m/Y') }}</p>#}
                {# <p class="grandTitre">{{ actualite.newsletterTextPreview|raw}}</p>#}
                 {#<a href="{{  path('actualites_show', {'slug': actualite.slug, 'page': page}) }}"><button class="evok btn-actu-suite mt-3 mb-5">Lire la suite</button></a>#}
@@ -98,11 +102,6 @@
                 {% endfor %}
             </div>#}
 
-
-
-
-
-
         </div>
         <div class="pagined">
             {% for i in 1..nbPages %}
@@ -112,7 +111,6 @@
     </div>
 
 </section>
-    </section>
 
 {% endblock %}
 
@@ -134,18 +132,62 @@
 
         }
 
-        window.addEventListener('scroll',()=>{
+
+        let button = document.querySelector('.butt')
+
+        let text = document.querySelector('.titreH')
+        let act = document.querySelectorAll('.act')
+
+        window.addEventListener('scroll' , ()=>{
+            const {scrollTop, clientHeight } = document.documentElement;
+
+
+
+
+            if(window.scrollY>50){
+                button.classList.add('dead')
+            }else {
+                button.classList.remove('dead')
+            }
+
+            if(window.scrollY>350){
+                text.classList.add('titreNone')
+            }else {
+                text.classList.remove('titreNone')
+            }
+
+
+
+                act.forEach((el,i)=>{
+                    const topElementToTopViewport = el.getBoundingClientRect().top;
+
+                    if(scrollTop > ((scrollTop + topElementToTopViewport).toFixed() - clientHeight* 1)){
+                        setTimeout(()=>{
+                        el.classList.add('apparition');
+                        el.getElementsByTagName('div')[1].classList.add('TextAnim1');
+                        el.getElementsByTagName('div')[2].classList.add('TextAnim')
+                        },i*150)
+                    }
+                })
+
+
+
+
+
+        })
+
+     /*   window.addEventListener('scroll',()=>{
             let value = window.pageYOffset
 
             bg.style.top = value*0.1 + 'px';
 
-        })
+        })*/
 
 
 
 
 
-        document.addEventListener('DOMContentLoaded', function () {
+     /*   document.addEventListener('DOMContentLoaded', function () {
 
 
             var calendarEl = document.getElementById('calendar');
@@ -200,7 +242,7 @@
             });
             calendar.render();
         });
-
+*/
 
     </script>
 
@@ -297,26 +339,5 @@
 
     </script>
 
-    <script>
 
-
-        let button = document.querySelector('.butt')
-        let text = document.querySelector('.titreH')
-console.log(scrollY)
-        window.addEventListener('scroll',()=>{
-            if(window.scrollY>50){
-              button.classList.add('dead')
-            }else {
-                button.classList.remove('dead')
-            }
-
-            if(window.scrollY>100){
-                text.classList.add('titreNone')
-            }else {
-                text.classList.remove('titreNone')
-            }
-        })
-
-
-    </script>
 {% endblock %}
