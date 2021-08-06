@@ -105,7 +105,36 @@
         </div>
         <div class="pagined">
             {% for i in 1..nbPages %}
-                <a href="{{ path('actualites_index_page', {'page': i}) }}"><button class="evok btn-actu-suite">{{ i }}</button></a>
+                <a href="{{ path('actualites_index_page', {'page': i}) }}"><button class="evok btn-actu-suite page">{{ i }}</button></a>
+                <script> //ici, on rend le premier élement actif mais juste pour commencer
+                    {% if i < 2 %}
+
+                    var pa = document.querySelectorAll('.page')
+
+
+                    pa.item(0).classList.add('actif')
+
+                    {%endif %}
+                </script>
+
+                {# La double balise script est necessaire ne vous inquitez pas#}
+
+                {% if i == page %}
+                     {% if i > 1 %}
+                <script>
+                    var pa = document.querySelectorAll('.page')
+                    pa.item(0).classList.remove('actif')  //ici, on désactive le premier élement afin d'activer l'élement courant
+
+                    pa.item({{ page - 1 }}).classList.add('actif')  // page - 1 ici car la 2ème page par exemple a plus=tot l'indice 1 dans la liste "pa"
+
+                </script>
+
+                    {%endif %}
+
+                {%endif %}
+
+
+
             {% endfor %}
         </div>
     </div>
