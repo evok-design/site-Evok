@@ -9,7 +9,7 @@
 
 <section class="bg">
 
-    <div class="head" style=" background: url('{{ head}}');">
+    <div class="head" style=" background: url('{{ head}}');background-attachment: fixed;background-position:center;">
         <div class="titreH">
             <div class="line">
                 <span class="petit">design</span>
@@ -17,6 +17,7 @@
             </div>
             {# <i class="far fa-angle-down"></i>#}
         </div>
+        <i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i>
         <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt">Lire l'article</a>
     </div>
 
@@ -154,10 +155,26 @@
     <script>
 
         let h = document.querySelector('.head')
+
         let bg = document.querySelector('.bg')
+
+
+
         window.onload = () =>{
 
             h.classList.toggle('head2')
+
+
+            h.style.backgroundPosition = `50% ${innerHeight / 2}px`;
+
+            gsap.to(h, {
+                backgroundPosition: `50% ${-innerHeight / 2}px`,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: h,
+                    scrub: true
+                }
+            });
 
         }
 

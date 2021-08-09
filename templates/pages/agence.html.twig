@@ -4,9 +4,120 @@
 
 {% block body %}
 
-    {% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}
+    {#{% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
 
-    <div class="affichage-desktop" style="display: none">
+
+    <section class="scroll-parent">
+        <!-- Enfant -->
+        <div class="bg divi">
+
+            <div class="head" style=" background: url('{{ asset('uploads/Agence/agence_top.jpg') }}');background-position: center center;background-size: cover;">
+                <div class="titreH">
+                    <div class="line">
+                        <span class="petit">Découvrir</span>
+                        <span class="grand">l'agence</span>
+                    </div>
+
+                </div>
+                <i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i>
+            </div>
+
+        </div>
+
+        <!-- Enfant -->
+        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%">
+            <div class="col-10">
+                <img src="/uploads/Agence/IMG_7756.png" alt="Evok local" class="w-100 h-100">
+            </div>
+
+
+            <div class="d-flex flex-column bg-transparent p-4" style="line-height: 1.5rem">
+
+                <svg width="100%" height="150" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 356.27 95.45" style="enable-background:new 0 0 356.27 95.45; margin-bottom: 50px" xml:space="preserve">
+<style type="text/css">
+    .st0{fill:#FFFFFF;}
+</style>
+                    <path class="st0" d="M76.87,54.82l-41.22-0.09l-5.18,0c1.78-6.39,4.92-12.36,8.32-15.74h7.06l14.26-0.02
+	c0-14.14-9.08-22.12-21.67-22.12c-11.04,0-19.67,7.74-19.67,28.87c0,23.29,7.9,32.07,22.24,32.07c7.17,0,16-2.52,22.99-5.42
+	l7.04,15.07c-5.89,3.32-19.54,8.01-29.66,8.01C22.24,95.45,0,86.24,0,47.99C0,11.77,20.42,0,38.44,0
+	c20.59,0,38.43,15.29,38.43,39.36V54.82z M120.37,94.29h-1.65L84.61,1.3h19.8l4.62,13.8l26.56,79.19H120.37z M163.78,17.98
+	L142.9,76.74l-5.1-36.15L150.09,1.3h19.81L163.78,17.98z M245.2,83.45c-5.14,5.66-13.75,11.9-28.23,11.9c-1.15,0-2.3-0.04-3.38-0.11
+	c-0.03,0-0.07-0.01-0.09-0.01c-4.6-0.34-8.55-1.33-11.92-2.7c-5.74-2.37-9.87-5.81-12.82-9.08c-7.15-7.9-10.08-15.58-10.08-35.76
+	c0-19.98,2.92-27.67,10.08-35.54c4.72-5.23,12.37-10.91,24.83-11.8c1.08-0.07,2.23-0.12,3.38-0.12c2.66,0,5.12,0.21,7.4,0.59
+	l-4.56,18.3c-0.91-0.12-1.88-0.19-2.84-0.19c-1.14,0-2.27,0.09-3.38,0.27c-5.04,0.82-9.38,3.34-11.63,6.51
+	c-3.49,4.93-4.58,8.62-4.58,21.98c0,13.56,1.09,17.24,4.58,22.17c1.03,1.47,2.49,2.76,4.29,3.87c2.09,1.27,4.61,2.21,7.34,2.66
+	c1.11,0.16,2.24,0.26,3.38,0.26c1.05,0,2.07-0.08,3.06-0.23c5.17-0.74,9.67-3.32,11.97-6.55c3.49-4.93,4.57-8.61,4.57-21.99
+	c0-7.55-0.34-12.05-1.25-15.39l7.82-22.43c0.75,0.69,1.42,1.39,2.06,2.1c7.14,7.87,10.08,15.57,10.08,35.54
+	C255.28,67.87,252.35,75.55,245.2,83.45z M293.37,6.74v32.32v6.36v22.56v27.47h-18.7V1.66h18.7V6.74z M302.6,57.45l1.8-8.44
+	l4.74-22.33L329.5,1.77h22.36L328.53,28.2l-7.05,7.95l-13.44,15.12L302.6,57.45z M348.31,95.45h-15.1l-12.02-21.07l-5.7-10.21
+	l2.7-1.98l11.52-8.52l6.56,10l20.01,31.79H348.31z"/>
+</svg>
+                <p class="text-justify paragraphe pb-5" >Notre agence est située dans le Dynapole de <span class="sp">Ludres.</span>
+                    Evok est historiquement une agence de <span class="sp">design industriel </span> depuis 1997. Depuis 10 ans, Evok accompagne également ses clients dans leur <span class="sp">communication</span></p>
+
+                <div class="d-flex flex-column " >
+                    <span style="font-size: 40px; letter-spacing: 0.5rem;">1997</span>
+                    <div style="width: 100%;border: 1px solid grey;" class="mt-4 mb-3"></div>
+                    <span  style="font-size: 22px; letter-spacing: 0.5rem;color: grey">création d'évok</span>
+                </div>
+
+            </div>
+
+
+        </div >
+        <!-- Enfant -->
+        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%">
+
+            <div class="d-flex flex-column bg-transparent p-4 col-3 " style="line-height: 1.5rem">
+
+               <span style="font-size: 30px;line-height: 2.3rem; letter-spacing: 0.5rem;text-align: justify" class="pb-5"> Nous avons pensé notre espace de travail</span>
+
+                <p class="text-justify paragraphe pb-5" >En 2005, les designers d’Evok ont <span class="sp">imaginé, dessiné et conçu </span>les locaux dans lesquels ils évoluent.
+                    Fidèle aux engagements Evok, le bâtiment a été<span class="sp"> éco-conçu.</span> Ce bâtiment lumineux et chaleureux mélange plusieurs <span class="sp">espaces de vie et de création.</span></p>
+
+            </div>
+
+            <div class="col-9 ">
+                <img src="/uploads/Agence/IMG_4500.JPG" alt="Evok local" class="w-100 h-100">
+            </div>
+
+
+        </div >
+        <!-- Enfant -->
+        <div class="divi" style="background: #1f2020; padding: 5%">
+                <div class="d-flex flex-row">
+
+                    <div class="d-flex flex-column bg-transparent p-5 col-4 " style="line-height: 1.5rem">
+
+                        <span style="font-size: 60px;line-height: 2.3rem; letter-spacing: 0.5rem;" class="pb-5"> L'équipe</span>
+
+                        <p class="text-justify paragraphe pb-5" >Notre équipe est composée de  8 collaborateurs. Notre processus créatif est axé sur  la  <span class="sp">collaboration </span>entre  les  designers, les communicants et les developpeurs.
+                            Ce travail en équipe est enrichi par différents  profils, diffférentes  <span class="sp">compétences</span> et <span class="sp">experiences.</span></p>
+                        <div class="d-flex flex-column align-items-end " style="color: grey">
+                            <p >Designer</p>
+                            <p>Graphiste</p>
+                            <p>Développeurs</p>
+                            <p>Community Manager</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-8 p-5">
+                        <img src="/uploads/Agence/IMG_3598.JPG" alt="Evok local" class="w-100 h-100">
+                    </div>
+
+                </div>
+
+                {#<div class="row ">
+                    <img src="/uploads/Agence/reneka_footer_sombre.jpg" alt="" class="col-12" style="height: 100px;">
+                </div>#}
+
+        </div >
+
+    </section>
+
+   {# <div class="affichage-desktop" style="display: none">
         <div class="row mt-5">
             <div class="col-12 col-lg-6 pl-0 pr-0">
                 <img src="/uploads/Agence/agence_corps.jpg" alt="" class="img-fluid">
@@ -16,7 +127,7 @@
                 <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Située sur le Dynapôle de Ludres – Fléville, à proximité de Nancy, Evok est historiquement une agence de design industriel. Depuis 10 ans, Evok accompagne ses clients dans leur communication, qu'elle soit digitale ou print.</p>
                 <p class="pl-4 pr-4 pb-4 pt-0 text-justify">Depuis sa création en 1997. Elle exerce l’activité de designer au sens large : produit, transport, espace. Notre regard de designers porte sur la réflexion ergonomique et l’utilisation par un public. Lorsque l’on utilise un objet du quotidien, que l’on évolue dans un espace ou que l’on navigue sur un site internet, la démarche reste la même : l’utilisateur ne doit pas se poser de questions et appréhender le produit avec intuitivité.</p>
             </div>
-        </div>
+        </div>#}
 
 {#        <div class="row">#}
 {#            <div class="col-12 col-lg-6 pl-0 pr-0">#}
@@ -27,7 +138,7 @@
 {#                <img src="/img/equipe_2.jpg" alt="" class="img-fluid">#}
 {#            </div>#}
 {#        </div>#}
-    </div>
+   {# </div>
 
     <div class="affichage-mobile" style="display: none">
         <div class="row mt-5">
@@ -41,7 +152,7 @@
             </div>
 
         </div>
-
+#}
 {#        <div class="row">#}
 {#            <div class="col-12 col-lg-6 pl-0 pr-0">#}
 {#                <div class="col-12 col-lg-6 pl-0 pr-0">#}
@@ -52,7 +163,7 @@
 {#            </div>#}
 
 {#        </div>#}
-    </div>
+  {#  </div>
 
     <div class="row text-center mt-5 pt-5">
         <div class="col-12 col-md-4">
@@ -107,7 +218,7 @@
                 l’agence et s’occupe de la gestion administrative d’Evok. Elle est en alternance au CNAM de Nancy.
             </p>
         </div>
-    </div>
+    </div>#}
 
 
 {% endblock %}
@@ -130,5 +241,32 @@
                 $('.affichage-desktop').hide();
             }
         });
+
+        let h = document.querySelector('.head')
+
+        let bg = document.querySelector('.bg')
+
+
+
+        window.onload = () => {
+
+            h.classList.toggle('head2')
+
+        }
+
+        let text = document.querySelector('.titreH')
+        let act = document.querySelectorAll('.act')
+
+        window.addEventListener('scroll' , ()=> {
+            const {scrollTop, clientHeight} = document.documentElement;
+
+            if (window.scrollY > 350) {
+                text.classList.add('titreNone')
+            } else {
+                text.classList.remove('titreNone')
+            }
+
+        })
+
     </script>
 {% endblock %}

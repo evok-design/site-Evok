@@ -39,22 +39,34 @@
         </div>
     </div>
 </div>#}
-<navbar class="nav">
-    <a href="{{ path('index') }}"  ><img src="{{ asset('/img/Logo_evok_designindustriel.png') }}" alt="" class="logo"></a>
-    <ul>
-        <li><a href="{{ path('agence') }}">L'agence</a></li>
-        <li><a href="{{ path('creation_index') }}">Créations</a></li>
-        <li><a href="{{ path('actualites_index_page', {'page': 1}) }}">Evok News</a></li>
-        <li><a href="{{ path('parcours') }}">Presse</a></li>
-        <li><a href="http://evok-international.com/">Evok Internationnal</a></li>
-        <li><a href="{{ path('contact') }}">contact</a></li>
+<nav class="navbar navbar-expand-md fixed-top ">
+
+    <div class="d-flex justify-content-between">
+        <a href="{{ path('index') }}"  ><img src="{{ asset('/img/Logo_evok_designindustriel.png') }}" alt="" class="log w-25 p-2"></a>
+
+        <button class="navbar-toggler " data-toggle="collapse" data-target="#nav"  style="color: white">
+            <i class="fas fa-bars fa-2x"></i>
+        </button>
+    </div>
+
+
+
+
+    <ul class="navbar-nav collapse navbar-collapse justify-content-lg-between text-sm-right w-100" id="nav">
+        <li class="nav-item"> <a class="nav-link " href="{{ path('agence') }}">L'agence</a></li>
+        <li class="nav-item"><a class="nav-link " href="{{ path('creation_index') }}">Créations</a></li>
+        <li class="nav-item"><a class="nav-link " href="{{ path('actualites_index_page', {'page': 1}) }}">Evok News</a></li>
+        <li class="nav-item"><a class="nav-link " href="{{ path('parcours') }}">Presse</a></li>
+        <li class="nav-item"><a class="nav-link " href="http://evok-international.com/">Evok Internationnal</a></li>
+        <li class="nav-item"><a class="nav-link " href="{{ path('contact') }}">contact</a></li>
     </ul>
 
-</navbar>
+</nav>
 
 {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
-        let nav = document.querySelector('.nav')
+        let nav = document.querySelector('.navbar')
 
         window.addEventListener('scroll',()=>{
            if(window.scrollY>400){
@@ -63,5 +75,12 @@
                nav.classList.remove('navHide')
            }
         })
+
+        console.log(location.pathname)
+
+    $(function () {
+        $('ul a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('acti');
+    })
+
     </script>
 {% endblock %}

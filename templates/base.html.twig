@@ -24,7 +24,7 @@
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
-    <body>
+    <body style="line-height: 1!important;">
         {#<div class="container-fluid">#}
             {% include 'navbar.html.twig' %}
             {% block body %}{% endblock %}
@@ -44,6 +44,10 @@
             <script src="{{ asset('js/tarteaucitron/tarteaucitron.js') }}" type="text/javascript"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales-all.js"></script>
             <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+            <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+            <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+
+
 
             <script type="text/javascript">
                 tarteaucitron.init({
