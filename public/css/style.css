@@ -50,21 +50,19 @@
 /*  Scroll aimenté*/
 
 .scroll-parent {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+
+    width: 100%;
+
 }
 
 .divi{
     width: 100%;
     height: 100vh;
-    background-color: #A3B0D9;
+
 
 }
 
-.scroll-parent > .divi {
-    scroll-snap-align: start;
-}
+
 
 /*Fin  Scroll aimenté*/
 
@@ -167,6 +165,16 @@
 }
 
 
+.cre{
+    letter-spacing: 0.5rem;
+    opacity: .7;
+    transition: all .5s ease-in-out;
+}
+
+.cre:hover{
+    letter-spacing: 0.7rem;
+    opacity: 1;
+}
 /*FIN Page Actualité*/
 
 
@@ -588,7 +596,7 @@ div .fc-dayGrid-view .fc-body .fc-row{
 /*font-family: "Brevia";*/
 /*src: url("/fonts/brevia_regular.otf");*/
 /*}*/
-@font-face {
+/*@font-face {
     font-family: "Didact";
     src: url('/fonts/DidactGothic-Regular.ttf');
 }
@@ -608,7 +616,7 @@ div .fc-dayGrid-view .fc-body .fc-row{
 @font-face {
     font-family: "SourceSans";
     src: url("/fonts/SourceSansPro-Light.otf");
-}
+}*/
 @font-face {
     font-family: "HelveticaLigth";
     src: url("/fonts/Helvetica/HelveticaNeue-Light.otf");
@@ -632,7 +640,7 @@ p{
 
 html{
     height: 100%;
-
+    scroll-behavior: smooth;
 
 }
 
@@ -642,7 +650,6 @@ body{
     background-color: #1f2020;
     color: #FFFFFF;
     overflow-x: hidden;
-
 
 }
 
@@ -1140,6 +1147,7 @@ div.bgFooter>div.flex a{
 
 #footer{
     margin-top: 5em;
+      
 }
 
 .description-right-actu{

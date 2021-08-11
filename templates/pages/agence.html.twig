@@ -3,9 +3,7 @@
 {% block title %}{{parent()}} | Agence de design {% endblock %}
 
 {% block body %}
-
     {#{% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
-
 
     <section class="scroll-parent">
         <!-- Enfant -->
@@ -19,13 +17,13 @@
                     </div>
 
                 </div>
-                <i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i>
+                <a href="#childOne" style="color: #FFFFFF;"><i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i></a>
             </div>
 
         </div>
 
         <!-- Enfant -->
-        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%">
+        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%" id="childOne">
             <div class="col-10">
                 <img src="/uploads/Agence/IMG_7756.png" alt="Evok local" class="w-100 h-100">
             </div>
@@ -85,7 +83,7 @@
 
         </div >
         <!-- Enfant -->
-        <div class="divi" style="background: #1f2020; padding: 5%">
+        <div class="divi d-flex flex-column justify-content-center" style="background: #1f2020; padding: 5%; background: linear-gradient(to top, transparent , #1f2020 20%), url('{{ asset('uploads/Agence/reneka_footer_sombre.jpg') }}'); background-size: cover;background-position: center center">
                 <div class="d-flex flex-row">
 
                     <div class="d-flex flex-column bg-transparent p-5 col-4 " style="line-height: 1.5rem">
@@ -102,21 +100,21 @@
                         </div>
                     </div>
 
-
                     <div class="col-8 p-5">
                         <img src="/uploads/Agence/IMG_3598.JPG" alt="Evok local" class="w-100 h-100">
                     </div>
 
                 </div>
 
-                {#<div class="row ">
-                    <img src="/uploads/Agence/reneka_footer_sombre.jpg" alt="" class="col-12" style="height: 100px;">
-                </div>#}
+                <div class="row d-flex flex-column justify-content-center  align-items-center mt-2 w-auto">
+                    <a class="cre" href="{{ path('creation_index') }}" style="color: #FFFFFF; font-size: 70px;text-decoration: none;"> Créations </a>
+                    <span class="trait m-4" style="border: 1px solid grey;width: 15%" ></span>
+                </div>
 
         </div >
 
     </section>
-
+{% endblock %}
    {# <div class="affichage-desktop" style="display: none">
         <div class="row mt-5">
             <div class="col-12 col-lg-6 pl-0 pr-0">
@@ -221,30 +219,17 @@
     </div>#}
 
 
-{% endblock %}
+
 
 {% block javascripts %}
     {{parent()}}
     <script>
 
-
-
-        $(document).ready(function(e) {
-
-            if (window.matchMedia("(min-width: 992px)").matches) {
-                $(".affichage-desktop").show();
-                $(".affichage-mobile").hide();
-
-            }
-            else {
-                $('.affichage-mobile').show();
-                $('.affichage-desktop').hide();
-            }
-        });
-
         let h = document.querySelector('.head')
 
         let bg = document.querySelector('.bg')
+        let text = document.querySelector('.titreH')
+        let act = document.querySelectorAll('.act')
 
 
 
@@ -254,8 +239,6 @@
 
         }
 
-        let text = document.querySelector('.titreH')
-        let act = document.querySelectorAll('.act')
 
         window.addEventListener('scroll' , ()=> {
             const {scrollTop, clientHeight} = document.documentElement;
