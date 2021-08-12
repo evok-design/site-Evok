@@ -148,7 +148,7 @@
     {{ parent() }}
 
     <!-- SnapWidget -->
-    <script src="https://snapwidget.com/js/snapwidget.js"></script>
+    {#<script src="https://snapwidget.com/js/snapwidget.js"></script>#}
 
     {#CALENDRIER #}
 
@@ -166,8 +166,8 @@
 
 
             h.style.backgroundPosition = `50% ${innerHeight / 2}px`;
-
             gsap.to(h, {
+
                 backgroundPosition: `50% ${-innerHeight / 2}px`,
                 ease: "none",
                 scrollTrigger: {
@@ -186,9 +186,6 @@
 
         window.addEventListener('scroll' , ()=>{
             const {scrollTop, clientHeight } = document.documentElement;
-
-
-
 
             if(window.scrollY>50){
                 button.classList.add('dead')
@@ -222,12 +219,6 @@
 
         })
 
-     /*   window.addEventListener('scroll',()=>{
-            let value = window.pageYOffset
-
-            bg.style.top = value*0.1 + 'px';
-
-        })*/
 
 
 

@@ -186,6 +186,7 @@
 
 .navHide{
     opacity:0;
+
 }
 
 
@@ -368,7 +369,7 @@
     text-decoration: none;
     letter-spacing: 5px;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 25px;
     opacity: 70%;
     transition: all 0.5s ease-in-out;
 
@@ -1147,7 +1148,7 @@ div.bgFooter>div.flex a{
 
 #footer{
     margin-top: 5em;
-      
+
 }
 
 .description-right-actu{
@@ -1518,4 +1519,25 @@ body #tarteaucitron #tarteaucitronPrivacyUrl{
 
 }
 
+/*
+.viewport {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
+.scroll-container {
+    position: absolute;
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+*/

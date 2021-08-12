@@ -5,9 +5,9 @@
 {% block body %}
     {#{% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
 
-    <section class="scroll-parent">
+    <section class="scroll-parent" >
         <!-- Enfant -->
-        <div class="bg divi">
+        <div  class="bg divi">
 
             <div class="head" style=" background: url('{{ asset('uploads/Agence/agence_top.jpg') }}');background-position: center center;background-size: cover;">
                 <div class="titreH">
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Enfant -->
-        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%" id="childOne">
+        <div  class="divi d-flex flex-row " style="background: #1f2020; padding: 5%" id="childOne">
             <div class="col-10">
                 <img src="/uploads/Agence/IMG_7756.png" alt="Evok local" class="w-100 h-100">
             </div>
@@ -64,10 +64,13 @@
 
 
         </div >
-        <!-- Enfant -->
-        <div class="divi d-flex flex-row " style="background: #1f2020; padding: 5%">
 
-            <div class="d-flex flex-column bg-transparent p-4 col-3 " style="line-height: 1.5rem">
+
+
+        <!-- Enfant -->
+        <div  class="divi d-flex flex-row s" style="background: #1f2020; padding: 5%">
+
+            <div class="d-flex flex-column bg-transparent p-4 col-3 text1" style="line-height: 1.5rem;transform: translateY(300px);opacity: 0">
 
                <span style="font-size: 30px;line-height: 2.3rem; letter-spacing: 0.5rem;text-align: justify" class="pb-5"> Nous avons pensé notre espace de travail</span>
 
@@ -76,14 +79,21 @@
 
             </div>
 
-            <div class="col-9 ">
-                <img src="/uploads/Agence/IMG_4500.JPG" alt="Evok local" class="w-100 h-100">
+            <div class="col-9 " >
+                <img src="/uploads/Agence/IMG_4500.JPG" alt="Evok local" class="w-100 h-100 im" style="transform: scale(.9);border-radius: 2%;">
             </div>
 
 
         </div >
+
+
+
+
+
+
         <!-- Enfant -->
-        <div class="divi d-flex flex-column justify-content-center" style="background: #1f2020; padding: 5%; background: linear-gradient(to top, transparent , #1f2020 20%), url('{{ asset('uploads/Agence/reneka_footer_sombre.jpg') }}'); background-size: cover;background-position: center center">
+
+        <div  class="divi d-flex flex-column justify-content-center E3" style="background: #1f2020; padding: 5%; background: linear-gradient(to top, transparent , #1f2020 20%), url('{{ asset('uploads/Agence/reneka_footer_sombre.jpg') }}'); background-size: cover;background-position: center center">
                 <div class="d-flex flex-row">
 
                     <div class="d-flex flex-column bg-transparent p-5 col-4 " style="line-height: 1.5rem">
@@ -101,7 +111,7 @@
                     </div>
 
                     <div class="col-8 p-5">
-                        <img src="/uploads/Agence/IMG_3598.JPG" alt="Evok local" class="w-100 h-100">
+                        <img src="/uploads/Agence/IMG_3598.JPG" alt="Evok local" class="w-100 h-100 p-6" style="opacity: 0">
                     </div>
 
                 </div>
@@ -226,11 +236,7 @@
     <script>
 
         let h = document.querySelector('.head')
-
-        let bg = document.querySelector('.bg')
         let text = document.querySelector('.titreH')
-        let act = document.querySelectorAll('.act')
-
 
 
         window.onload = () => {
@@ -238,6 +244,49 @@
             h.classList.toggle('head2')
 
         }
+
+
+        gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".im",{
+        scrollTrigger:{
+            trigger:'.s',
+            scrub:true,
+            markers:true,
+            start:"top center",
+            end:"bottom center",
+        },
+        scale:1,
+        borderRadius:0,
+        ease:"back.out(1.7)",
+        duration:3
+    });
+    gsap.to(".text1",{
+        scrollTrigger:{
+            trigger:'.s',
+            scrub:true,
+            start:"top center",
+            end:"bottom center",
+        },
+        y:-10,
+        opacity:1,
+        ease:"back.out(1.7)",
+        duration:4
+    });
+
+    gsap.to(".p-6",{
+        scrollTrigger:{
+            trigger:'.E3',
+            scrub:true,
+            start:"top center",
+            end:"bottom center",
+        },
+         opacity:1,
+        ease: Circ.easeInOut,
+        duration:1
+    });
+
+
 
 
         window.addEventListener('scroll' , ()=> {
@@ -249,7 +298,10 @@
                 text.classList.remove('titreNone')
             }
 
-        })
+            })
+
+
+
 
     </script>
 {% endblock %}
