@@ -9,28 +9,26 @@
 
 <section class="bg">
 
-    <div class="head" style=" background: url('{{ head}}');background-attachment: fixed;background-position:center;">
-        <div class="titreH">
-            <div class="line">
+    <div class="head" style=" background: url('{{ head}}');background-attachment: fixed;background-position:center;" >
+        <div class="titreH ">
+            <div class="line ">
                 <span class="petit">design</span>
                 <span class="grand">news</span>
             </div>
             {# <i class="far fa-angle-down"></i>#}
         </div>
-        <i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i>
-        <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt">Lire l'article</a>
+        <i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated test2"></i>
+        <a href="{{  path('actualites_show', {'slug': header.slug, 'page': page}) }}" class="butt " >Lire l'article</a>
     </div>
-
-
 
 </section>
 
-<section class="body">
-    <div class="container-fluid   text-center px-5 mt-xl-5">
-        <div class="row px-xl-5 mx-xl-4" >
+<section class="body ">
+    <div class="container-fluid   text-center px-5  mt-xl-5 ">
+        <div class="row px-xl-5 mx-xl-4 " >
             {% for actualite in actualites %}
                 {% set img = '/uploads/actualites/'~actualite.imgPrev %}
-            <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-1 pl-0 pr-1 act" >
+            <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-1 pl-0 pr-1 act " >
                 <div id="fond" >
                     <img src="{{img}}" class="img-fluid2" >
                     <a href="{{  path('actualites_show', {'slug':  actualite.slug, 'page': page}) }}" class="butt2">Lire l'article</a>
