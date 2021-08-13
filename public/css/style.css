@@ -336,15 +336,22 @@
         background-position: 25% 75% !important; /*centre de l'image */
     }
 
-    .AgenceDiv{
-        display: flex;
+    .divi{
         flex-direction: column !important;
+        max-height: auto !important;
+
+    }
+    .esp_marge{
+        margin-bottom: 50px!important;
+    }
+    .souleve_marge_bas{
+        padding-bottom: 0px !important;
+    }
+    .flexInvC{
+        flex-direction: column-reverse!important;
     }
 
-    .evokImage img{
-        height: 500px !important;
-        width: 100% !important;
-    }
+
 
 
 
