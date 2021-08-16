@@ -390,6 +390,7 @@
     .petit{
         font-family: "HelveticaLigth"!important;
         font-size: 60px;
+
     }
 
     .grand{
@@ -397,6 +398,45 @@
         font-family: "HelveticaMedium"!important;
         font-size: 110px;
     }
+    .div1{
+        height: 1500px;
+    }
+    .div1Img{
+        margin-bottom: 0px !important;
+
+        max-height: 400px !important;
+    }
+    .div1Texte {
+
+        height: 100% !important;
+        max-height: 400px !important;
+    }
+    .div2Texte{
+
+        max-height:300px !important;
+
+    }
+    .div2Img{
+
+        padding: 0px !important;
+        max-height: 500px !important;
+    }
+
+    .div3{
+
+        margin-top: 500px !important;
+    }
+
+
+
+    .layer_1{
+
+       /* margin-top: -400px;
+        margin-bottom: 1000px;*/
+    }
+
+
+
 
     .headAgence{
         background-position: 25% 75% !important; /*centre de l'image */
@@ -404,18 +444,24 @@
 
     .divi{
         flex-direction: column !important;
-        max-height: auto !important;
+        max-height: 100vh !important;
 
     }
+    .divCreations{
+        margin-bottom: 250px;
+    }
+
     .esp_marge{
-        margin-bottom: 50px!important;
+        margin-bottom: 100px!important;
     }
     .souleve_marge_bas{
-        padding-bottom: 0px !important;
+        padding-bottom: 10px !important;
     }
     .flexInvC{
-        flex-direction: column-reverse!important;
+       flex-direction: column-reverse!important;
     }
+
+
 
 }
 
@@ -423,7 +469,11 @@
 
 }
 @media (max-width: 1199.98px) {
-
+    petit{
+        font-family: "HelveticaLigth"!important;
+        font-size: 60px;
+        background-color: orange;
+    }
 }
 
 /*// Small devices (landscape phones, 576px and up)*/
@@ -444,6 +494,7 @@
 /*
 // Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
+
 
 }
 /*Fin navbar */
