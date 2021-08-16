@@ -371,6 +371,9 @@
     .log{
         min-width: 50%;
     }
+    .body .container-fluid{
+        margin-top: 25px !important;
+    }
 
 
     .titreH{
