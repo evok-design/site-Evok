@@ -10,10 +10,10 @@
 <section class="bg">
 
     <div class="head" style=" background: url('{{ head}}');background-attachment: fixed;background-position:center;" >
-        <div class="titreH ">
+        <div class="titreHA ">
             <div class="line ">
-                <span class="petit">design</span>
-                <span class="grand">news</span>
+                <span class="petitA">design</span>
+                <span class="grandA">news</span>
             </div>
             {# <i class="far fa-angle-down"></i>#}
         </div>
@@ -160,6 +160,7 @@
 
         window.onload = () =>{
 
+
             h.classList.toggle('head2')
 
 
@@ -177,24 +178,24 @@
         }
 
 
-        let button = document.querySelector('.butt')
 
         let text = document.querySelector('.titreH')
+        let textA = document.querySelector('.titreHA')
         let act = document.querySelectorAll('.act')
 
         window.addEventListener('scroll' , ()=>{
+
             const {scrollTop, clientHeight } = document.documentElement;
 
-            if(window.scrollY>50){
-                button.classList.add('dead')
-            }else {
-                button.classList.remove('dead')
-            }
+
+
 
             if(window.scrollY>350){
-                text.classList.add('titreNone')
+
+                textA.classList.add('titreNone')
             }else {
-                text.classList.remove('titreNone')
+
+                textA.classList.remove('titreNone')
             }
 
 
@@ -204,6 +205,7 @@
 
                     if(scrollTop > ((scrollTop + topElementToTopViewport).toFixed() - clientHeight* 1)){
                         setTimeout(()=>{
+
                         el.classList.add('apparition');
                         el.getElementsByTagName('div')[1].classList.add('TextAnim1');
                         el.getElementsByTagName('div')[2].classList.add('TextAnim')
