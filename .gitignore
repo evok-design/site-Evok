@@ -3,7 +3,7 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
-/.env
+.env
 
 # Email spool folder
 /app/spool/*
@@ -55,3 +55,4 @@
 .idea/
 .idea
 .idea/*
+.env
