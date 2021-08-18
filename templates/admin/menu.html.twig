@@ -65,6 +65,24 @@
                     <a class="dropdown-item" href="{{ path('slider_add_picture') }}">Ajouter une photo à un slider</a>
                 </div>
             </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'parcours' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Parcours
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('parcours_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('parcours_new_admin') }}">Créer un magazine</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown mr-3">
+                <a class="nav-link dropdown-toggle {% if controller_name is defined and controller_name == 'fiches' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Fiches produits
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('fiches_index_admin') }}">Voir</a>
+                    <a class="dropdown-item" href="{{ path('fiches_new_admin') }}">Créer une fiche produit</a>
+                </div>
+            </li>
             <li class="nav-item dropdown ml-4 mr-1">
                 <a class="hoverDeco btn btn-info text-white">
                     <i class="fas fa-user-circle mr-3 "></i>{{ app.user.nom }}

@@ -1,0 +1,155 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des Parcours{% endblock %}
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mb-2 mt-2 text-left">
+                <h1>Liste des parcours</h1>
+                <a href="{{ path('parcours_new_admin') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter un magazine</button></a>
+            </div>
+        </div>
+        <table class="table" id="tableMessage">
+            <thead>
+            <tr>
+                <th class="text-left">Titre</th>
+                <th class="text-left">Prévisualisation</th>
+                <th class="text-center">Date de création</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div class="error alert alert-error" style="display: none">Une erreur est survenue</div>
+            {% for parcour in parcours %}
+                {% set image = '/uploads/parcours/'~parcour.image %}
+                <tr data-id="{{ parcour.id }}">
+                    <td class="text-left">{{ parcour.titre }}</td>
+                    <td class="text-left"><img style="width: 80px;"  src='{{ image }}'></td>
+                    <td class="text-center">{{ parcour.createdAt | date}}</td>
+                    <td class="text-center">
+                        {#<a href="{{ path('parcours_show_admin', {'id': parcour.id}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>#}
+                        <a href="{{ path('parcours_edit_admin', {'id': parcour.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                        {{ include('admin/parcours/_delete_form.html.twig', {'id' : parcour.id}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{parent()}}
+
+    {#<script>
+
+        //Fonction pour remonter l'odre d'une création
+        $(document).on('click','#btnOrdreUp',function(e){
+            let idElement = $(this).parents('tr').data('id');
+            let elemHtml = $("tr[data-id='"+ idElement +"']").html();
+
+            let ordre = $(this).parents('tr').data('ordre');
+
+            $('.btnOrdre').attr("disabled", true);
+
+            $.ajax({
+                url: "{{ path('CreationSortUp') }}",
+                type: "POST",
+                data:{idElement:idElement,elemHtml:elemHtml, ordre:ordre},
+                dataType: 'json',
+
+                success:function(response){
+
+                    if(response.info === "erreur"){
+                        $('.PremPosition').show(500).delay(2000).hide(500);
+                    }
+                    else if(response.info === "ok"){
+
+                        let ordreUp = ordre - 1;
+                        let stockage = $("tr[data-ordre='"+ ordre +"']");
+
+                        $("tr[data-ordre='"+ ordreUp +"']").before(response.html);
+                        let attente = 'attente';
+                        $("tr[data-ordre='"+ ordre +"']").attr({'data-ordre' : attente});
+
+                        $(stockage).remove();
+
+                        //On change les index des 2 data-ordre que l'on a échnagé de position
+                        $("tr[data-ordre='"+ ordreUp +"']").attr({'data-ordre' : ordre});
+                        $("tr[data-ordre='"+ attente +"']").attr({'data-ordre' : ordreUp});
+                    }
+                },
+                error:function () {
+                    $('.error').show(1).delay(2000).hide();
+                },
+                complete: function () {
+                    $('.btnOrdre').attr("disabled", false);
+                },
+            });
+
+        });
+
+
+        //Fonction pour descendre l'odre d'une création
+        $(document).on('click','#btnOrdreDown',function(e){
+
+            let idElement = $(this).parents('tr').data('id');
+            let elemHtml = $("tr[data-id='"+ idElement +"']").html();
+
+            let ordre = $(this).parents('tr').data('ordre');
+
+            $('.btnOrdre').attr("disabled", true);
+
+            $.ajax({
+                url: "{{ path('CreationSortDown') }}",
+                type: "POST",
+                data:{idElement:idElement,elemHtml:elemHtml, ordre:ordre},
+                dataType: 'json',
+
+                success:function(response){
+
+                    if(response.info === "erreur"){
+                        $('.LastPosition').show(500).delay(2000).hide(500);
+                    }
+                    else if(response.info === "ok"){
+
+                        let ordreUp = ordre + 1;
+                        let stockage = $("tr[data-ordre='"+ ordre +"']");
+
+                        $("tr[data-ordre='"+ ordreUp +"']").after(response.html);
+                        let attente = 'attente';
+                        $("tr[data-ordre='"+ ordre +"']").attr({'data-ordre' : attente});
+
+                        $(stockage).remove();
+
+                        //On change les index des 2 data-ordre que l'on a échnagé de position
+                        $("tr[data-ordre='"+ ordreUp +"']").attr({'data-ordre' : ordre});
+                        $("tr[data-ordre='"+ attente +"']").attr({'data-ordre' : ordreUp});
+                    }
+                },
+                error:function () {
+                    $('.error').show(1).delay(2000).hide();
+                },
+                complete: function () {
+                    $('.btnOrdre').attr("disabled", false);
+                },
+            });
+
+        });
+
+
+
+    </script>#}
+
+
+
+{% endblock %}

@@ -10,6 +10,8 @@ parameters:
     slider_directory: '%kernel.project_dir%/public/uploads/slider'
     blocs_directory: '%kernel.project_dir%/public/uploads/blocs'
     emails_directory: '%kernel.project_dir%/public/uploads/emails'
+    parcours_directory: '%kernel.project_dir%/public/uploads/parcours'
+    fiches_directory: '%kernel.project_dir%/public/uploads/fichesProd'
 
 services:
     # default configuration for services in *this* file
@@ -36,6 +38,13 @@ services:
         tags:
           - {name: 'console.command', command: 'app:newsletter'}
 
+    App\Service\ParcoursFileUploader:
+        arguments:
+            $targetDirectory: '%parcours_directory%'
+
+    App\Service\FichesFileUploader:
+        arguments:
+            $targetDirectory: '%fiches_directory%'
 
 
     # add more service definitions when explicit configuration is needed

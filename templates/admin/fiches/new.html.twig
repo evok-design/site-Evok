@@ -1,0 +1,24 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Ajouter une fiche produit{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-left">
+                <a href="{{ path('fiches_index_admin') }}" class="btn btn-secondary"><i class="fal fa-angle-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {{ include('admin/fiches/_form.html.twig', {'button_label': 'Ajouter'}) }}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

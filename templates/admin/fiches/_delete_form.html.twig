@@ -1,0 +1,5 @@
+<form method="post" class="d-inline" action="{{ path('fiches_delete_admin', {'id': fich.id}) }}" onsubmit="return confirm('Voulez-vous supprimer cette fiche ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  fich.id) }}">
+    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+</form>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parcours{% endblock %}
+
+{% block body %}
+    <h1>Parcours</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parcour.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ parcour.titre }}</td>
+            </tr>
+            <tr>
+                <th>Pdf</th>
+                <td>{{ parcour.pdf }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ parcour.image }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ parcour.createdAt ? parcour.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parcours_index_admin') }}">back to list</a>
+
+    <a href="{{ path('parcours_edit_admin', {'id': parcour.id}) }}">edit</a>
+
+    {{ include('parcours/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Editer un magazine{% endblock %}
+
+{% block body %}
+    {% include 'admin/menu.html.twig' %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-left">
+                <a href="{{ path('parcours_index_admin') }}" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <h1>Modifier {{ parcour.titre }}</h1>
+            </div>
+        </div>
+        {% set image = '/uploads/parcours/'~parcour.image %}
+
+
+        <div class="row">
+            <div class="col">
+
+             {#   {% if image7 is not empty %}
+                    <div id="image7" style="display: none">
+                        <img class="col-3 mb-5" src='{{ image7 }}'> <button class="btn btn-danger deleteImg">Supprimmer l'image <i class="fal fa-times"></i></button>
+                    </div>
+                {% endif %}#}
+
+                {{ include('admin/parcours/_form.html.twig', {'button_label': 'Modifier', 'attr' : {'class' : 'btn btn-success'}}) }}
+                <div id="image4" >
+                    <img class="col-3 mb-5"  src='{{ image }}'>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script>
+
+
+    </script>
+    {#<script>
+        $("#creation_image1").after($("#image").show());
+
+        $(document).on('click','.deleteImg',function(e){
+
+            e.preventDefault();
+
+            let id_image = $(this).parent().attr('id');
+
+
+            $.ajax({
+                url: "{{ path('creation_delete_image', {'id' : parcour.id}) }}",
+                type: "POST",
+                data:{id_image:id_image},
+                dataType: 'json',
+
+                success:function(response){
+
+                    $('#' + id_image).hide();
+                },
+                error:function () {
+                },
+                complete: function () {
+                },
+            });
+        });
+#}
+
+
+{% endblock %}
