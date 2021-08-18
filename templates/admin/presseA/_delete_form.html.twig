@@ -1,0 +1,5 @@
+<form method="post" class="d-inline" action="{{ path('presse_a_delete_admin', {'id': presse.id}) }}" onsubmit="return confirm('Voulez-vous supprimer cet article ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  presse.id) }}">
+    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+</form>

@@ -12,6 +12,7 @@ parameters:
     emails_directory: '%kernel.project_dir%/public/uploads/emails'
     parcours_directory: '%kernel.project_dir%/public/uploads/parcours'
     fiches_directory: '%kernel.project_dir%/public/uploads/fichesProd'
+    presseA_directory: '%kernel.project_dir%/public/uploads/presseA'
 
 services:
     # default configuration for services in *this* file
@@ -46,6 +47,9 @@ services:
         arguments:
             $targetDirectory: '%fiches_directory%'
 
+    App\Service\PresseAFileUploader:
+        arguments:
+            $targetDirectory: '%presseA_directory%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

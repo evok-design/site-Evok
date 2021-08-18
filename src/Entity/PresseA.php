@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ParcoursRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PresseARepository")
  */
-class Parcours
+class PresseA
 {
     /**
      * @ORM\Id()
@@ -17,14 +17,9 @@ class Parcours
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $titre;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pdf;
+    private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -32,17 +27,19 @@ class Parcours
     private $image;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lien_site;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
-
 
     public function __construct(){
         $this->createdAt = new \DateTime();
 
     }
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -53,21 +50,9 @@ class Parcours
         return $this->titre;
     }
 
-    public function setTitre(?string $titre): self
+    public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getPdf(): ?string
-    {
-        return $this->pdf;
-    }
-
-    public function setPdf(?string $pdf): self
-    {
-        $this->pdf = $pdf;
 
         return $this;
     }
@@ -80,6 +65,18 @@ class Parcours
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLienSite(): ?string
+    {
+        return $this->lien_site;
+    }
+
+    public function setLienSite(?string $lien_site): self
+    {
+        $this->lien_site = $lien_site;
 
         return $this;
     }

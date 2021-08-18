@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ParcoursRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PresseVRepository")
  */
-class Parcours
+class PresseV
 {
     /**
      * @ORM\Id()
@@ -17,31 +17,29 @@ class Parcours
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pdf;
+    private $sous_titre;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private $lien_video;
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
-
-    public function __construct(){
+    public function __construct()
+    {
         $this->createdAt = new \DateTime();
-
     }
-
 
     public function getId(): ?int
     {
@@ -53,33 +51,33 @@ class Parcours
         return $this->titre;
     }
 
-    public function setTitre(?string $titre): self
+    public function setTitre(string $titre): self
     {
         $this->titre = $titre;
 
         return $this;
     }
 
-    public function getPdf(): ?string
+    public function getSousTitre(): ?string
     {
-        return $this->pdf;
+        return $this->sous_titre;
     }
 
-    public function setPdf(?string $pdf): self
+    public function setSousTitre(string $sous_titre): self
     {
-        $this->pdf = $pdf;
+        $this->sous_titre = $sous_titre;
 
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getLienVideo(): ?string
     {
-        return $this->image;
+        return $this->lien_video;
     }
 
-    public function setImage(?string $image): self
+    public function setLienVideo(string $lien_video): self
     {
-        $this->image = $image;
+        $this->lien_video = $lien_video;
 
         return $this;
     }

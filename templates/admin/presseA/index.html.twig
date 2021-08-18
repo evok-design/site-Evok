@@ -1,21 +1,21 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Liste des Fiches{% endblock %}
+{% block title %}Liste des Articles de presse{% endblock %}
 {% block body %}
     {% include 'admin/menu.html.twig' %}
 
     <div class="container">
         <div class="row">
             <div class="col mb-2 mt-2 text-left">
-                <h1>Liste des fiches</h1>
-                <a href="{{ path('fiches_new_admin') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter une fiche</button></a>
+                <h1>Liste des articles de presse</h1>
+                <a href="{{ path('presse_a_new_admin') }}"><button class="btn btn-primary"><i class="fal fa-plus"></i> Ajouter un article de presse</button></a>
             </div>
         </div>
         <table class="table" id="tableMessage">
             <thead>
             <tr>
                 <th class="text-left">Titre</th>
-                <th class="text-left">Sous-titre</th>
+                <th class="text-left">site internet | lien article</th>
                 <th class="text-left">Prévisualisation</th>
                 <th class="text-center">Date de création</th>
                 <th class="text-center">Actions</th>
@@ -23,17 +23,17 @@
             </thead>
             <tbody>
             <div class="error alert alert-error" style="display: none">Une erreur est survenue</div>
-            {% for fich in fiches %}
-                {% set image = '/uploads/fichesProd/'~fich.image %}
-                <tr data-id="{{ fich.id }}">
-                    <td class="text-left">{{ fich.titre }}</td>
-                    <td class="text-left">{{ fich.sousTitre }}</td>
+            {% for presse in presse_as %}
+                {% set image = '/uploads/presseA/'~presse.image %}
+                <tr data-id="{{ presse.id }}">
+                    <td class="text-left">{{ presse.titre }}</td>
+                    <td class="text-left">{{ presse.lienSite }}</td>
                     <td class="text-left"><img style="width: 80px;"  src='{{ image }}'></td>
-                    <td class="text-center">{{ fich.createdAt | date("d/m/Y", "Europe/Paris")}}</td>
+                    <td class="text-center">{{presse.createdAt | date("d/m/Y", "Europe/Paris")}}</td>
                     <td class="text-center">
-                        {#<a href="{{ path('fiches_show_admin', {'id': fiches.id}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>#}
-                        <a href="{{ path('fiches_edit_admin', {'id': fich.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
-                        {{ include('admin/fiches/_delete_form.html.twig', {'id' : fich.id}) }}
+                        {#<a href="{{ path('presse_a_show_admin', {'id': presse.id}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>#}
+                        <a href="{{ path('presse_a_edit_admin', {'id': presse.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
+                        {{ include('admin/presseA/_delete_form.html.twig', {'id' : presse.id}) }}
                     </td>
                 </tr>
             {% else %}

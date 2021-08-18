@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PresseA{% endblock %}
+
+{% block body %}
+    <h1>Edit PresseA</h1>
+
+    {{ include('presse_a/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('presse_a_index') }}">back to list</a>
+
+    {{ include('presse_a/_delete_form.html.twig') }}
+{% endblock %}

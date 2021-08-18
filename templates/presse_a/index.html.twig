@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PresseA index{% endblock %}
+
+{% block body %}
+    <h1>PresseA index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Lien_site</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presse_a in presse_as %}
+            <tr>
+                <td>{{ presse_a.id }}</td>
+                <td>{{ presse_a.titre }}</td>
+                <td>{{ presse_a.image }}</td>
+                <td>{{ presse_a.lienSite }}</td>
+                <td>{{ presse_a.createdAt ? presse_a.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('presse_a_show', {'id': presse_a.id}) }}">show</a>
+                    <a href="{{ path('presse_a_edit', {'id': presse_a.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('presse_a_new') }}">Create new</a>
+{% endblock %}

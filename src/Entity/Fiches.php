@@ -81,7 +81,7 @@ class Fiches
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -93,7 +93,7 @@ class Fiches
         return $this->pdf;
     }
 
-    public function setPdf(string $pdf): self
+    public function setPdf(?string $pdf): self
     {
         $this->pdf = $pdf;
 

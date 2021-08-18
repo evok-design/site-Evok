@@ -95,6 +95,10 @@ class FichesController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pdf = $fich->getPdf();
+        $imgFile = $fich->getImage();
+
+
         $form = $this->createForm(FichesType::class, $fich);
         $form->handleRequest($request);
 
@@ -107,13 +111,19 @@ class FichesController extends AbstractController
             if ($pdfFile) {
                 $pdfFileFileName = $fichesFileUploader->upload($pdfFile);
                 $fich->setPdf($pdfFileFileName);
+            }else{
+                $fich->setPdf($pdf);
             }
 
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $imageFileFileName = $fichesFileUploader->upload($imageFile);
                 $fich->setimage($imageFileFileName);
+            }else{
+                $fich->setImage($imgFile);
             }
+
+
             $this->getDoctrine()->getManager()->persist($fich);
             $this->getDoctrine()->getManager()->flush();
 

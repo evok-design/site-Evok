@@ -27,7 +27,7 @@
                 <tr data-id="{{ parcour.id }}">
                     <td class="text-left">{{ parcour.titre }}</td>
                     <td class="text-left"><img style="width: 80px;"  src='{{ image }}'></td>
-                    <td class="text-center">{{ parcour.createdAt | date}}</td>
+                    <td class="text-center">{{ parcour.createdAt | date("d/m/Y", "Europe/Paris")}}</td>
                     <td class="text-center">
                         {#<a href="{{ path('parcours_show_admin', {'id': parcour.id}) }}"><button class="btn btn-secondary"><i class="fa fa-eye"></i></button></a>#}
                         <a href="{{ path('parcours_edit_admin', {'id': parcour.id}) }}"><button class="btn btn-warning "><i class="fa fa-pen"></i></button></a>
@@ -36,7 +36,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4">no records found</td>
+                    <td colspan="4">0 trouvé</td>
                 </tr>
             {% endfor %}
             </tbody>

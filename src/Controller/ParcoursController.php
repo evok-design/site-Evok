@@ -96,6 +96,9 @@ class ParcoursController extends AbstractController
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $imgName = $parcour->getImage();
+        $pdfName = $parcour->getPdf();
+
 
         $form = $this->createForm(ParcoursType::class, $parcour);
         $form->handleRequest($request);
@@ -110,13 +113,20 @@ class ParcoursController extends AbstractController
             if ($pdfFile) {
                 $pdfFileFileName = $parcoursFileUploader->upload($pdfFile);
                 $parcour->setPdf($pdfFileFileName);
+            }else{
+                $parcour->setPdf($pdfName);
             }
+
+
 
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $imageFileFileName = $parcoursFileUploader->upload($imageFile);
                 $parcour->setimage($imageFileFileName);
+            }else{
+                $parcour->setImage($imgName);
             }
+
             $this->getDoctrine()->getManager()->persist($parcour);
             $this->getDoctrine()->getManager()->flush();
 

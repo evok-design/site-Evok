@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PresseV{% endblock %}
+
+{% block body %}
+    <h1>PresseV</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ presse_v.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ presse_v.titre }}</td>
+            </tr>
+            <tr>
+                <th>Sous_titre</th>
+                <td>{{ presse_v.sousTitre }}</td>
+            </tr>
+            <tr>
+                <th>Lien_video</th>
+                <td>{{ presse_v.lienVideo }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ presse_v.createdAt ? presse_v.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('presse_v_index') }}">back to list</a>
+
+    <a href="{{ path('presse_v_edit', {'id': presse_v.id}) }}">edit</a>
+
+    {{ include('presse_v/_delete_form.html.twig') }}
+{% endblock %}

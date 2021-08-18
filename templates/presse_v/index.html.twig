@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PresseV index{% endblock %}
+
+{% block body %}
+    <h1>PresseV index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Sous_titre</th>
+                <th>Lien_video</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presse_v in presse_vs %}
+            <tr>
+                <td>{{ presse_v.id }}</td>
+                <td>{{ presse_v.titre }}</td>
+                <td>{{ presse_v.sousTitre }}</td>
+                <td>{{ presse_v.lienVideo }}</td>
+                <td>{{ presse_v.createdAt ? presse_v.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('presse_v_show', {'id': presse_v.id}) }}">show</a>
+                    <a href="{{ path('presse_v_edit', {'id': presse_v.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('presse_v_new') }}">Create new</a>
+{% endblock %}

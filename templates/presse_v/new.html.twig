@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PresseV{% endblock %}
+
+{% block body %}
+    <h1>Create new PresseV</h1>
+
+    {{ include('presse_v/_form.html.twig') }}
+
+    <a href="{{ path('presse_v_index') }}">back to list</a>
+{% endblock %}
