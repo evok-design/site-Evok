@@ -5,6 +5,10 @@ namespace App\Controller;
 use App\Entity\Creation;
 use App\Form\ContactType;
 use App\Repository\CreationRepository;
+use App\Repository\FichesRepository;
+use App\Repository\ParcoursRepository;
+use App\Repository\PresseARepository;
+use App\Repository\PresseVRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -76,10 +80,41 @@ class PagesController extends AbstractController
     /**
      * @Route("/magazine-parcours", name="parcours")
      */
-    public function magazine()
+    public function magazine(ParcoursRepository $parcoursRepository)
     {
         return $this->render('pages/magazine.html.twig', [
-            'controller_name' => 'PagesController',
+            'parcours' => $parcoursRepository->findBy([],['createdAt'=>'DESC']),
+        ]);
+    }
+
+    /**
+     * @Route("/presse", name="presse")
+     */
+    public function EspacePresse()
+    {
+        return $this->render('pages/EspacePresse.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/Articles-de-presse", name="presseAV")
+     */
+    public function EspacePresseAV(PresseVRepository $presseVRepository , PresseARepository $presseARepository)
+    {
+        return $this->render('pages/EspacePresse.html.twig', [
+            'presseA' => $presseARepository->findAll(),
+            'presseV' => $presseVRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/Fiches-produits", name="fiches")
+     */
+    public function FicheProd(FichesRepository $fichesRepository)
+    {
+        return $this->render('pages/FichesProd.html.twig', [
+            'fiches' => $fichesRepository->findBy([],['createdAt'=>'DESC'])
         ]);
     }
 

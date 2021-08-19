@@ -22,7 +22,7 @@ class PresseVController extends AbstractController
     public function indexAdmin(PresseVRepository $presseVRepository): Response
     {
         return $this->render('admin/presseV/index.html.twig', [
-            'presse_vs' => $presseVRepository->findAll(),
+            'presse_vs' => $presseVRepository->findBy([],['createdAt'=>'DESC']),
         ]);
     }
 

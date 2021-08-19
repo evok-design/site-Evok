@@ -34,7 +34,7 @@ class ParcoursController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/parcours/index.html.twig', [
-            'parcours' => $parcoursRepository->findAll(),
+            'parcours' => $parcoursRepository->findBy([],['createdAt'=>'DESC']),
             'controller_name' => 'parcours']);
     }
 

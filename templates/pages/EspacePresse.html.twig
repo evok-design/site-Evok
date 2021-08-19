@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} | Espace presse {% endblock %}
+
+{% block body %}
+    {#{% include 'header.html.twig' with {'img' : 'uploads/Agence/agence_header.jpg', 'alt' : 'Agence de design Nancy Metz Ludres'} %}#}
+
+    <section class="scroll-parent" >
+        <!-- Enfant -->
+        <div  class="bg divi">
+
+            <div class="head headAgence" style=" background: url('{{ asset('uploads/EspacePresse/header_2.jpg') }}');background-position: center center;background-size: cover;">
+                <div class="titreH">
+                    <div class="line">
+                        <span class="petit">Espace</span>
+                        <span class="grand">presse</span>
+                    </div>
+
+                </div>
+                <a href="#childOne" style="color: #FFFFFF;"><i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i></a>
+            </div>
+
+        </div>
+
+        <!-- Enfant -->
+        <div  class="container-fluid p-5" style="background: #1f2020; " id="childOne">
+
+            <div class="row  m-5 " >
+
+            <a  href="{{ path('fiches') }}" class="col-12 col-md-6 col-lg-4 py-md-3 py-sm-3 test"  style="color: inherit">
+                <img src="{{ asset('uploads/EspacePresse/wolf.jpg') }}" alt="" class="img-fluid">
+                <div class="line2">
+                    <span class="petit" style="font-size: 20px; opacity: 70%">Fiches</span>
+                    <span class="grand" style="font-size: 50px">Produits</span>
+                    <div style="width: 100%;border: 1px solid grey;" class="mt-2"></div>
+                </div>
+            </a>
+
+
+            <a  href="{{ path('parcours') }}" class="col-12 col-md-6 col-lg-4 py-md-3 py-sm-3 test" style="color: inherit">
+                <img src="{{ asset('uploads/EspacePresse/parcours.jpg') }}" alt="" class="img-fluid">
+                <div class="line2">
+                    <span class="petit" style="font-size: 20px; opacity: 70%">Magazines</span>
+                    <span class="grand" style="font-size: 50px">Parcours</span>
+                    <div style="width: 100%;border: 1px solid grey;" class="mt-2"></div>
+                </div>
+            </a>
+                </a>
+
+
+            <a href="{{ path('presseAV') }}" class="col-12 col-md-6 col-lg-4 py-md-3 py-sm-3 test " style="color: inherit">
+                <img src="{{ asset('uploads/EspacePresse/wolfA.jpg') }}" alt="" class="img-fluid">
+                <div class="line2">
+                    <span class="petit" style="font-size: 20px; opacity: 70%">Articles</span>
+                    <span class="grand" style="font-size: 50px">Presse</span>
+                    <div style="width: 100%;border: 1px solid grey;" class="mt-2"></div>
+                </div>
+            </a>
+
+
+            </div>
+
+        </div >
+
+
+
+
+    </section>
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+
+        let h = document.querySelector('.head')
+        let text = document.querySelector('.titreH')
+
+
+        window.onload = () => {
+
+            h.classList.toggle('head2')
+
+        }
+
+
+        gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".im",{
+        scrollTrigger:{
+            trigger:'.s',
+            scrub:true,
+            markers:false,
+            start:"top center",
+            end:"center center",
+        },
+        scale:1,
+        borderRadius:0,
+        ease:"back.out(1.7)",
+        duration:3
+    });
+    gsap.to(".text1",{
+        scrollTrigger:{
+            trigger:'.s',
+
+            scrub:true,
+            start:"top center",
+            end:"bottom center",
+        },
+        y:-10,
+        opacity:1,
+        ease:"back.out(1.7)",
+        duration:4
+    });
+
+    gsap.to(".p-6",{
+        scrollTrigger:{
+            trigger:'.E3',
+            scrub:true,
+            markers:false,
+            start:"top center",
+            end:"bottom center",
+        },
+         opacity:1,
+        ease: Circ.easeInOut,
+        duration:1
+    });
+
+
+
+
+        window.addEventListener('scroll' , ()=> {
+            const {scrollTop, clientHeight} = document.documentElement;
+
+            if (window.scrollY > 350) {
+                text.classList.add('titreNone')
+            } else {
+                text.classList.remove('titreNone')
+            }
+
+            })
+
+
+
+
+    </script>
+{% endblock %}

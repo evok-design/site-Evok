@@ -33,7 +33,7 @@ class PresseAController extends AbstractController
     public function indexAdmin(PresseARepository $presseARepository): Response
     {
         return $this->render('admin/presseA/index.html.twig', [
-            'presse_as' => $presseARepository->findAll(),
+            'presse_as' => $presseARepository->findBy([],['createdAt'=>'DESC']),
         ]);
     }
 

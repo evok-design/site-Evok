@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Fiches Produits {% endblock %}
+
+{% block body %}
+
+    {% include 'header.html.twig' with {'title': 'Fiches Produits', 'img' : 'uploads/parcours/header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz','petit':'Fiches','grand':'Produit'} %}
+
+    <div class="row produits-text p-1 p-sm-2 p-md-5 p-lg-5  m-5" >
+
+        {% for fiche in fiches %}
+
+
+
+        <div class="col-12 col-md-6 col-xl-4 mt-1 text-center  pr-0 pro">
+
+            <a href="{{ asset('uploads/fichesProd/'~fiche.pdf)}}" target="_blank">
+                <img class="img-fluid mb-4 img-produits" src="{{ asset('uploads/fichesProd/'~fiche.image) }}" alt="{{ fiche.titre }}">
+
+            </a>
+            <i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:38%;left: 45%;"></i>
+
+            <p class="text-left petitTitre " style="color: white;opacity: 1">{{ fiche.titre }}</p>
+            <p class="containeurTitre text-left grandTitre" style="opacity: 70%;">{{ fiche.sousTitre }}</p>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+<script>
+
+
+</script>
+{% endblock %}

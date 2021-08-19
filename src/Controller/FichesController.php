@@ -34,7 +34,7 @@ class FichesController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/fiches/index.html.twig', [
-            'fiches' => $fichesRepository->findAll(),
+            'fiches' => $fichesRepository->findBy([],['createdAt'=>'DESC']),
             'controller_name' => 'fiches']);
     }
 
