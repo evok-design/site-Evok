@@ -1297,6 +1297,7 @@ body{
 
 
 .pro #ico{
+    color: white;
     opacity: 0 !important;
     transition: opacity 1.2s ease-in-out;
 }

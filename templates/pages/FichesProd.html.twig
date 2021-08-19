@@ -16,9 +16,9 @@
 
             <a href="{{ asset('uploads/fichesProd/'~fiche.pdf)}}" target="_blank">
                 <img class="img-fluid mb-4 img-produits" src="{{ asset('uploads/fichesProd/'~fiche.image) }}" alt="{{ fiche.titre }}">
-
+                <i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:38%;left: 45%;"></i>
             </a>
-            <i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:38%;left: 45%;"></i>
+
 
             <p class="text-left petitTitre " style="color: white;opacity: 1">{{ fiche.titre }}</p>
             <p class="containeurTitre text-left grandTitre" style="opacity: 70%;">{{ fiche.sousTitre }}</p>

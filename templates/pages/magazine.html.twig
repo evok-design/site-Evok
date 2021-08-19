@@ -16,8 +16,9 @@
 
             <a href="{{ asset('uploads/parcours/'~parcour.pdf)}}" target="_blank">
                 <img class="img-fluid mb-4 img-parcours" src="{{ asset('uploads/parcours/'~parcour.image) }}" alt="{{ parcour.titre }}">
+                <i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:45%;left: 45%;"></i>
             </a>
-            <i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:45%;left: 45%;"></i>
+
             <p class="text-left ">{{ parcour.createdAt| date('Y') }}</p>
         </div>
 
