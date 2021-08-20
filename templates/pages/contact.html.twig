@@ -8,90 +8,62 @@
 {% endblock %}
 {% block body %}
 
-    {% include 'header.html.twig' with {'title': 'Contact', 'img' : 'uploads/Contact/contact_header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz'} %}
+    {% include 'header.html.twig' with {'title': 'Contact', 'petit': 'Prendre', 'grand':'Contact', 'img' : 'uploads/Contact/contact_header.jpg', 'alt' : 'Page de contact du site Evok design '} %}
 
-    <div class="row position-relative">
-        <div id="map"></div>
-        <div class="col-12 col-md-6 pr-md-0">
-            <div class="box-contact p-4">
-                <div class="row">
-                    <div class="col">
-                        <img src="{{ asset('img/logo.svg') }}" alt="" class="img-fluid logo">
-                    </div>
-                    <div class="col">
-                        <p> 310 rue Pierre et Marie Curie<br/>
-                            54710 Dynapôle - Ludres<br/>
-                            +33 3 83 25 24 57
-                        </p>
-                    </div>
-                </div>
-                {% for label, messages in app.flashes(['success', 'danger']) %}
-                    {% for message in messages %}
-                        <div class="row">
-                            <div class="col">
-                                <div class="alert alert-{{ label }}">
-                                    {{ message }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-                {{ form_start(form, {'multipart': true}) }}
-                <div class="row">
-                    <div class="col-12 col-lg-6">
-                        {{ form_label(form.name) }}
-                        {{ form_widget(form.name) }}
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        {{ form_label(form.email) }}
-                        {{ form_widget(form.email) }}
-                    </div>
-                </div>
-                <div class="row pt-2">
-                    <div class="col-12 col-lg-6">
-                        {{ form_label(form.subject) }}
-                        {{ form_widget(form.subject) }}
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        {{ form_label(form.attachment) }}
-                        <div class="input-group">
-                            <div class="custom-file">
-                                {{ form_widget(form.attachment, {'attr': {'class' :'custom-file-input', 'aria-describedby' : 'contact_attachment', "name" : "contact_attachment", 'onchange' : 'changeLabel()'} } ) }}
-                                <label class="custom-file-label" id="labelPJ" for="contact_attachment" name="contact_attachment">Choisir un fichier</label>
-                            </div>
-                            </dv>
-                        </div>
-                    </div>
-                </div>
+    <section class='content  divDesContacts col  '>
+        <div class="carte col-xl-2  col-lg-2 col-sm-12 col-md-6 col-xs-12">
 
-                <div class="row pt-3">
-                    <div class="col">
-                        {{ form_label(form.message) }}
-                        {{ form_widget(form.message) }}
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col is-flex">
-                        <input type="checkbox" id="consent" name="consent" class="form-control" required>
-                        <label for="consent">En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées, exploitées, traitées pour permettre de me contacter dans le cadre de la relation qui découle de cette prise de contact.
-                        </label>
-                    </div>
-                </div>
-                <div class="row pt-3 captcha">
-                    <div class="col">
-                        <div class="g-recaptcha" data-sitekey="6LeGU6oUAAAAANLZEFV8IzQRgJcdrGl8fYnFDx43"></div>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col">
-                        <button class="evok" type="submit">Envoyer</button>
-                    </div>
-                </div>
-                {{form_end(form)}}
-            </div>
         </div>
-    </div>
+        <div class="contact col-xl-10 col-lg-10 col-sm-12 col-md-12 col-xs-12 ">
+            <div class='row rowContact '>
+                <div class="col-xl-6  col-xs-12 col-sm-12 col-md-6  col-lg-6  ">
+                    <span class="spanContact">S'informer</span><br><br>
+                    evokdesign@evok.fr<br>
+                    contact@evok.fr<br><br>
+                    <a href="mailto:contact@evok.fr?subject=Demande infos"><button class="buttonContact"
+                                                                                   type="button">Nous ecrire</button></a>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <span class="spanContact">Candidater</span><br><br>
+                    recrutement@evok.fr<br>
+                    cv@evok.fr<br><br>
+                    <a href="mailto:cv@evok.fr?subject=Candidature"><button class="buttonContact"
+                                                                            type="button">Postuler</button></a>
+
+                </div>
+
+
+            </div>
+
+            <div class="row rowContact ">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    <span class="spanContact">Se rencontrer</span><br><br>
+                    +33 3 29 25 24 57<br><br>
+                    310 brue Pierre et Marie Curie<br>
+                    54710 Dynapôle - Ludres<br><br>
+                    <a href="mailto:contact@evok.fr?subject=Demande infos"><button class="buttonContact"
+                                                                                   type="button">Nous ecrire</button></a>
+                </div>
+
+                <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <span class="spanContact">Découvrir</span><br><br>
+                    <a href="https://www.instagram.com/evok_design/" target="_blank"><img src="img/instagram_détouré.png"
+                                                                                          height="30" width="60" class='reseaux bg-danger'></a>
+                    <a href="https://www.facebook.com/evokdesign/"><img src="img/logo_facebook_détouré.png" target="_blank"
+                                                                        height="30" width="30" class='reseaux'></a>
+                    <a href="https://www.linkedin.com/company/evok-design/" target="_blank"><img
+                                src="img/logo_linkedin_détouré.png" height="30" width="50" class='reseaux'></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 {% endblock %}
+
 
 {% block javascripts %}
 
