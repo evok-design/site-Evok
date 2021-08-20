@@ -3,30 +3,31 @@
 {% block title %}{{parent()}} Contact devis agence communication{% endblock %}
 {% block meta %}
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+{#    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />#}
+    <link href='css/styleContacts.css' rel='stylesheet' />
+{#    <script src='https://www.google.com/recaptcha/api.js'></script>#}
 {% endblock %}
 {% block body %}
 
-    {% include 'header.html.twig' with {'title': 'Contact', 'petit': 'Prendre', 'grand':'Contact', 'img' : 'uploads/Contact/contact_header.jpg', 'alt' : 'Page de contact du site Evok design '} %}
+    {% include 'header.html.twig' with {'title': 'contact', 'petit': 'Prendre', 'grand':'contact','class':'img-contact', 'img' : 'uploads/Contact/contact_header.jpg', 'alt' : 'Page de contact du site Evok design '} %}
 
     <section class='content  divDesContacts col  '>
-        <div class="carte col-xl-2  col-lg-2 col-sm-12 col-md-6 col-xs-12">
+        <div class="carte col-xl-4  col-lg-2 col-sm-12 col-md-6 col-xs-12">
 
         </div>
-        <div class="contact col-xl-10 col-lg-10 col-sm-12 col-md-12 col-xs-12 ">
-            <div class='row rowContact '>
-                <div class="col-xl-6  col-xs-12 col-sm-12 col-md-6  col-lg-6  ">
+        <div class="contact  col-xl-8 col-lg-10 col-sm-12 col-md-12 col-xs-12 ">
+            <div class='row rowContact  '>
+                <div class=" col-xl-offset-1 col-xl-5  col-xs-12 col-sm-12 col-md-6  col-lg-6  ">
                     <span class="spanContact">S'informer</span><br><br>
-                    evokdesign@evok.fr<br>
+                    evokdesign@evok.fr  <br><br>
                     contact@evok.fr<br><br>
                     <a href="mailto:contact@evok.fr?subject=Demande infos"><button class="buttonContact"
-                                                                                   type="button">Nous ecrire</button></a>
+                                                                                   type="button">Nous écrire</button></a>
                 </div>
 
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class=" col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <span class="spanContact">Candidater</span><br><br>
-                    recrutement@evok.fr<br>
+                    recrutement@evok.fr<br><br>
                     cv@evok.fr<br><br>
                     <a href="mailto:cv@evok.fr?subject=Candidature"><button class="buttonContact"
                                                                             type="button">Postuler</button></a>
@@ -36,8 +37,8 @@
 
             </div>
 
-            <div class="row rowContact ">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+            <div class="row rowContact  ">
+                <div class="  col-xl-offset-1 col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                     <span class="spanContact">Se rencontrer</span><br><br>
                     +33 3 29 25 24 57<br><br>
                     310 brue Pierre et Marie Curie<br>
@@ -48,8 +49,8 @@
 
                 <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <span class="spanContact">Découvrir</span><br><br>
-                    <a href="https://www.instagram.com/evok_design/" target="_blank"><img src="img/instagram_détouré.png"
-                                                                                          height="30" width="60" class='reseaux bg-danger'></a>
+                    <a href="https://www.instagram.com/evok_design/" target="_blank"><img   src="img/instagram_détouré.png"
+                                                                                          height="30" width="60" class='reseaux insta bg-danger'></a>
                     <a href="https://www.facebook.com/evokdesign/"><img src="img/logo_facebook_détouré.png" target="_blank"
                                                                         height="30" width="30" class='reseaux'></a>
                     <a href="https://www.linkedin.com/company/evok-design/" target="_blank"><img
@@ -69,9 +70,10 @@
 
     {{ parent() }}
 
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
+   {# <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>#}
     <script>
+/*
 
         function changeLabel(){
 
@@ -255,6 +257,7 @@
                 map.getCanvas().style.cursor = '';
             });
         });
+*/
 
     </script>
 {% endblock %}

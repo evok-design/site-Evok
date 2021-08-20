@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {% include 'header.html.twig' with {'title': 'Magazine parcours', 'img' : 'uploads/parcours/header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz','petit':'Magazines','grand':'Parcours'} %}
+    {% include 'header.html.twig' with {'title': 'Magazine parcours', 'img' : 'uploads/parcours/header.jpg','class':'' , 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz','petit':'Magazines','grand':'Parcours'} %}
 
     <div class="row parcours-text p-5 m-5">
 
@@ -12,7 +12,7 @@
 
 
 
-        <div class="col-12 col-md-6 col-xl-4 mt-1 text-center pro p-5">
+        <div class="col-12 col-md-6 col-xl-4 mt-1 text-center pro p-5">s
 
             <a href="{{ asset('uploads/parcours/'~parcour.pdf)}}" target="_blank">
                 <img class="img-fluid mb-4 img-parcours" src="{{ asset('uploads/parcours/'~parcour.image) }}" alt="{{ parcour.titre }}">

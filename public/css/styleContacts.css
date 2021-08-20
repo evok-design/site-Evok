@@ -1,0 +1,247 @@
+
+.img-contact{
+
+    max-height: 100vh !important;
+}
+.divDesContacts{
+    
+    margin-top: 10px;
+    color: gray;;
+    height: 70vh;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+ 
+    display: flex;
+    flex-direction: row;
+
+}
+
+.reseaux{
+    clip:rect(0, 0, 10px, 20px) !important;
+}
+.carte{
+ 
+    /*background-color: pink;*/
+    background-image: url(/img/cartess.png);
+    height: 100%;
+
+    background-position-x: left !important;
+    background-position-y: top !important;
+    background-repeat: no-repeat;
+}
+
+.rowContact{
+    height: 50% !important;
+    width: 100vw !important;
+   
+}
+
+.rowContact div{
+    padding-left: 100px;
+    padding-top: 50px;
+}
+
+
+
+.contact{
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+
+
+.buttonContact{
+    border-width: 2px 4px;
+    border-radius: 40px !important;    
+    margin-left:0px;
+
+    background-color: transparent;
+    color: gray;
+    border: ridge;
+    border-color: rgba(128,128,128,0.5);
+    letter-spacing: 3px;
+
+
+    
+}
+
+.spanContact{
+    color: white;
+    font-size: 20px;
+}
+
+/*pc*/
+@media screen and (min-width: 1200px) {
+
+    .divDesContacts{
+        line-height: 25px;
+        font-size: 20px;
+
+    }
+    .spanContact{
+        font-size: 35px;
+    }
+    .buttonContact{
+        margin-top: 10px;
+    }
+
+}
+/*telephone */
+@media screen and (max-width: 575.98px) {
+
+  .divDesContacts{
+      margin-top: 0px;
+      padding-top: 0px !important;
+      display: flex;
+      width: 100% !important;
+
+      height: 120vh !important;
+      line-height: 17px;
+
+      flex-direction: column-reverse !important;
+  }
+  .rowContact{
+      width: 100vw !important;
+      padding: 10vw;
+      height: 50% !important;
+
+  }
+  .rowContact div{
+    
+      height: 180px !important;
+      margin-bottom:10px;
+
+      padding-top: 0px !important;
+
+  }
+
+  .carte{
+      background-position-x: left !important;
+      background-position-y: 30% !important;
+      height: 300px !important;
+  }
+ 
+
+  
+}
+@media (min-width: 576px) and (max-width:768px) {
+
+
+
+    .divDesContacts{
+        margin-top: 200px;
+        display: flex;
+        width: 100% !important;
+
+        height: 1000px !important;
+        line-height: 17px;
+
+        flex-direction: column-reverse !important;
+    }
+    .rowContact{
+        width: 100vw !important;
+        padding: 10vw;
+        height: 50% !important;
+
+        padding-top: 0px !important;
+
+
+    }
+    .rowContact div{
+
+        height: 80px !important;
+        margin-bottom:10px;
+
+
+
+        height: auto !important;
+
+    }
+
+
+
+    .carte{
+        background-repeat: no-repeat;
+        height: 100px !important;
+        max-height: 200px !important;
+        background-position-y: 20% !important;
+
+
+
+    }
+
+}
+
+
+
+ /*tablette*/
+ @media (min-width: 600px) and (max-width:991.98px)  {
+   
+    body{
+        padding: 0px !important;
+    }
+   .divDesContacts{
+
+    display: flex;
+    flex-direction: column-reverse;
+    width: 200vw !important;
+    padding-left: 0px !important;
+    margin-top: 350px;
+       line-height: 20px;
+       font-size: 18px;
+
+
+   }
+
+   .carte{
+
+       background-position-x: left !important;
+       background-position-y: 30% !important;
+
+
+    }
+
+    .contact{
+        width: 100% !important;
+        display: flex;
+       /* height: 100vh !important;*/
+        flex-direction: column !important;
+    }
+    .rowContact{
+        display: flex !important;
+        flex-direction: row!important;
+        width: 100vw !important;
+
+        
+
+    }
+     .spanContact{
+         font-size: 25px !important;
+     }
+     .buttonContact{
+         margin-top: 10px;
+     }
+
+  }
+
+@media screen and (min-width:991.99px) and (max-width: 1199px) {
+
+    .divDesContacts{
+
+        display: flex;
+        flex-direction: row;
+    }
+    .carte{
+        width: 40% !important;
+        background-position-x: 20% !important;
+        background-position-y: 50%!important;
+    }
+
+    .contact{
+        width: 60% !important;
+    }
+}
+    
+    
