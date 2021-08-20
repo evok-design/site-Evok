@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Articles de Presse {% endblock %}
+
+{% block body %}
+
+    {% include 'header.html.twig' with {'title': 'Article de presse', 'img' : 'uploads/parcours/header.jpg', 'alt' : 'Création site internet WordPress et sur mesure Lorraine Nancy Metz','petit':'Articles','grand':'Presse'} %}
+
+    <h2 class="mt-4">Ils ont parlé de nous </h2>
+
+    <div class="row produits-text p-1 p-sm-2 p-md-5 p-lg-5  m-5" >
+
+
+        {% for presse in presseA %}
+
+
+
+        <div class="col-12 col-md-6 col-xl-6 mt-1 text-center p-1 p-sm-2 p-md-2 p-lg-3  p-xl-5 pro">
+
+            <a href="{{ presse.lienSite }}" target="_blank">
+                <img class="img-fluid mb-4 img-Articles" src="{{ asset('uploads/presseA/'~presse.image) }}" alt="{{ presse.titre }}">
+                {#<i class="far fa-file-pdf fa-4x " id="ico" style="position: absolute;top:38%;left: 45%;"></i>#}
+            </a>
+
+
+            {#<p class="text-left petitTitre " style="color: white;opacity: 1">{{ fiche.titre }}</p>#}
+            <p class="containeurTitre text-left grandTitre" style="opacity: 70%;">{{ presse.titre}}</p>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+<script>
+
+
+</script>
+{% endblock %}

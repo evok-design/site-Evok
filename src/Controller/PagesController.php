@@ -102,9 +102,9 @@ class PagesController extends AbstractController
      */
     public function EspacePresseAV(PresseVRepository $presseVRepository , PresseARepository $presseARepository)
     {
-        return $this->render('pages/EspacePresse.html.twig', [
-            'presseA' => $presseARepository->findAll(),
-            'presseV' => $presseVRepository->findAll()
+        return $this->render('pages/EspacePresseVideoArticle.html.twig', [
+            'presseA' => $presseARepository->findBy([],['createdAt'=>'DESC']),
+            'presseV' => $presseVRepository->findBy([],['createdAt'=>'DESC'])
         ]);
     }
 
