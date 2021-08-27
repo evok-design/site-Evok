@@ -20,13 +20,59 @@
 
 {% block body %}
 
-    <div class="text-center">
+
+
+
+    <div  class="bg divi">
+
+        <div class="head headAgence" style=" background: url('{{ asset('uploads/actualites/'~ actualite.imgHeader) }}');background-position: center center;background-size: cover;">
+            <div class="titreH">
+                <div class="line w-100">
+                    <span class="petit" style="opacity: 50%">{{ actualite.date|date('d/m/Y') }}</span>
+                    <span class="grand" >{{ actualite.title | truncate(10) }}</span>
+
+                </div>
+
+            </div>
+            <a href="#childOne" style="color: #FFFFFF;"><i class="far fa-angle-down scroll-down fa-4x position-absolute blob animated"></i></a>
+        </div>
+
+    </div>
+
+    <section class="p-5">
+        {#SLIDER#}
+
+        <div class="row m-5">
+            {% if actualite.slider.id is defined %}
+                <div class="slickCall col-7">
+                    {% for slide in slides %}
+                        <div>
+                            <img src="/uploads/slider/{{ slide.urlImage}}" alt="{{ slide.description }}" class="img-fluid  ml-5" >
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center col-6">
+                    <img src="/uploads/actualites/{{ actualite.imgHeader}}" alt="{{ actualite.metaDescription }}" class="img-fluid  d-inline">
+                </div>
+            {% endif %}
+            <div class="col-5 px-5">
+                <div class="justifyActu ml-5">{{actualite.contenu|raw}}</div>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+  {#  <div class="text-center">
         <h1 class="mb-2">{{ actualite.title }}</h1>
         <h2  class="text-red mb-5">{{ actualite.date|date('d/m/Y') }}</h2>
     </div>
 
     
-        {#SLIDER#}
+        #}{#SLIDER#}{#
     <div class="text-center mx-auto">
         {% if actualite.slider.id is defined %}
             <div class="slickCall" style="z-index: 99">
@@ -41,16 +87,9 @@
                 <img src="/uploads/actualites/{{ actualite.imgHeader}}" alt="{{ actualite.metaDescription }}" class="img-fluid  d-inline">
             </div>
         {% endif %}
-    </div>
+    </div>#}
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="justifyActu padding-top-actus-MQ mx-3 my-5 ">{{actualite.contenu|raw}}</div>
-            </div>
-        </div>
-    </div>
 
 {#    <div class="row">#}
 {#        <div class="col pl-0 pr-0 position-relative overflow-hidden">#}
@@ -108,6 +147,29 @@
                 autoplaySpeed: 2000,
             });
         });
+
+        let h = document.querySelector('.head')
+        let text = document.querySelector('.titreH')
+
+
+        window.onload = () => {
+
+            h.classList.toggle('head2')
+
+        }
+
+        window.addEventListener('scroll' , ()=> {
+            const {scrollTop, clientHeight} = document.documentElement;
+
+            if (window.scrollY > 350) {
+                text.classList.add('titreNone')
+            } else {
+                text.classList.remove('titreNone')
+            }
+
+        })
+
+
     </script>
 
 {% endblock %}

@@ -42,7 +42,7 @@ class ActualitesType extends AbstractType
             ]
         ])
             ->add('newsletter_text_preview', TextareaType::class, [
-                'label' => 'Texte newsletter *',
+                'label' => 'Crédits *',
                 'attr' => [
                     'class' => 'form-control editor mb-4'
                 ]

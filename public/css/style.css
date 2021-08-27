@@ -155,6 +155,13 @@
     flex-direction: column;
 }
 
+.titre_Article{
+    width: 400px;
+    transform: translate(35%,130%);
+    font-size: 40px;
+
+}
+
 .test img{
     opacity: 25%;
     transition: opacity 0.8s ease-in-out;
@@ -167,34 +174,38 @@
 
 .petit{
      font-family: "HelveticaLigth"!important;
-     font-size: 80px;
+     font-size: 50px;
  }
 
 .grand{
 
     font-family: "HelveticaMedium"!important;
-    font-size: 150px;
+    font-size: 100px;
 }
-
+.texte-date{
+    font-family: "HelveticaLigth"!important;
+    font-size: 20px;
+    opacity: 50%;
+}
 .petitA{
      font-family: "HelveticaLigth"!important;
-     font-size: 80px;
+     font-size: 60px;
  }
 
 .grandA{
 
     font-family: "HelveticaMedium"!important;
-    font-size: 150px;
+    font-size: 110px;
 }
 .petitAV{
      font-family: "HelveticaLigth"!important;
-     font-size: 80px;
+     font-size: 60px;
  }
 
 .grandAV{
 
     font-family: "HelveticaMedium"!important;
-    font-size: 150px;
+    font-size: 110px;
 }
 
 .butt{
@@ -350,6 +361,15 @@
 
 /*mobile*/
 @media screen and (max-width: 575.98px) {
+
+    .titre_Article{
+        width: 400px;
+        transform: translate(9%,20%);
+        font-size: 35px;
+        margin-bottom: 30px;
+
+    }
+
     .pro #ico{
        display: none;
     }
@@ -468,6 +488,16 @@
 
 
 @media (min-width: 576px) and (max-width:768px) {
+
+    .titre_Article{
+        width: 400px;
+        transform: translate(13%,20%);
+        font-size: 35px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+
+    }
+
     #fond a{
         font-size: 20px !important;
         width: inherit!important;
@@ -542,6 +572,17 @@
 
 /*tablette*/
 @media (min-width: 768px) and (max-width:991.98px)  {
+
+    .titre_Article{
+        width: 400px;
+        transform: translate(17%,20%);
+        font-size: 35px;
+
+        margin-top: 20px;
+
+    }
+
+
     #fond a{
         font-size: 20px !important;
         width: inherit!important;
@@ -680,6 +721,15 @@
 }
 
 @media screen and (min-width:991.98px) and (max-width: 1325px) {
+
+    .titre_Article{
+        width: 400px;
+        transform: translate(20%,50%);
+        font-size: 35px;
+
+    }
+
+
     #fond a{
         font-size: 20px !important;
         width: inherit!important;
@@ -894,19 +944,11 @@
 
 }
 
-#fond:hover a{
-    text-decoration: none;
-    color: #FFFFFF;
-    opacity: 1;
-
-
-}
 .butt2:hover{
     text-decoration: none;
     color: gray!important;
     background-color: #FFFFFF ;
     opacity: 0.5!important;
-
 
 }
 
@@ -1299,12 +1341,15 @@ body{
 
 .img-Articles{
     width: 100%;
-    max-height: 450px;
+    max-height: 500px;
     max-width: 800px;
     opacity: 100%;
     transition: opacity 0.7s ease-in-out;
 }
+.img-contact{
 
+    max-height: 100vh !important;
+}
 
 
 
